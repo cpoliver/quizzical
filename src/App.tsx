@@ -1,5 +1,6 @@
 import React from "react";
 
+import { questions } from "./feature/quiz/quizData";
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
 import { Results } from "./feature/results/Results.view";
@@ -17,36 +18,6 @@ export type Question = {
   correct_answer: Answer;
   incorrect_answers: Answer[];
 };
-
-const questions: Question[] = [
-  {
-    category: "Vehicles",
-    type: "boolean",
-    difficulty: "hard",
-    question:
-      "In 1993 Swedish car manufacturer Saab experimented with replacing the steering wheel with a joystick in a Saab 9000.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "General Knowledge",
-    type: "boolean",
-    difficulty: "hard",
-    question:
-      "This is the correct spelling of &quot;Supercalifragilisticexpialidocious&quot;.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-  {
-    category: "General Knowledge",
-    type: "boolean",
-    difficulty: "hard",
-    question:
-      "&quot;Number 16 Bus Shelter&quot; was a child&#039;s name that was approved by the New Zealand government.",
-    correct_answer: "True",
-    incorrect_answers: ["False"],
-  },
-];
 
 export const App: React.FC = () => {
   const [quizState, setQuizState] = useState<QuizState>("init");
