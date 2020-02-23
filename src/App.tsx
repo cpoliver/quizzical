@@ -79,7 +79,14 @@ export const App: React.FC = () => {
         />
       )}
       {quizState === "finished" && (
-        <Results questions={questions} answers={answers} />
+        <Results
+          questions={questions}
+          answers={answers}
+          onQuizRestarted={() => {
+            setQuizState("init");
+            setAnswers([]);
+          }}
+        />
       )}
     </div>
   );
