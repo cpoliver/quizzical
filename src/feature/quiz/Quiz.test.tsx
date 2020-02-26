@@ -1,94 +1,126 @@
-import { questions } from "./quizData";
+import { take } from "ramda";
+
+import { Answer } from "../../App";
+import { questions as allQuestions } from "./quizData";
 import { toResults } from "./Quiz.view";
 
+const questions = take(3, allQuestions);
+
 const answers = {
-  allCorrect: [
-    "True",
-    "False",
-    "True",
-    "True",
-    "True",
-    "True",
-    "False",
-    "False",
-    "True",
-    "True",
-  ],
-  someCorrect: [
-    "True",
-    "True",
-    "True",
-    "True",
-    "False",
-    "True",
-    "False",
-    "False",
-    "False",
-    "False",
-  ],
-  noneCorrect: [
-    "False",
-    "True",
-    "False",
-    "False",
-    "False",
-    "False",
-    "True",
-    "True",
-    "False",
-    "False",
-  ],
+  allCorrect: ["True", "False", "True"],
+  someCorrect: ["True", "True", "False"],
+  noneCorrect: ["False", "True", "False"],
 };
 
 describe("toResults", () => {
   it("should score correctly when all answers are correct", () => {
-    const actual = toResults(questions, answers.allCorrect);
+    const actual = toResults(questions, answers.allCorrect as Answer[]);
 
     expect(actual).toEqual([
-      [questions[0], true],
-      [questions[1], true],
-      [questions[2], true],
-      [questions[3], true],
-      [questions[4], true],
-      [questions[5], true],
-      [questions[6], true],
-      [questions[7], true],
-      [questions[8], true],
-      [questions[9], true],
+      {
+        correct: true,
+        category: "Science & Nature",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
+      {
+        correct: true,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
+        correct_answer: "False",
+        incorrect_answers: ["True"],
+      },
+      {
+        correct: true,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "In &quot;Portal 2&quot;, Cave Johnson started out Aperture Science as a shower curtain company.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
     ]);
   });
 
   it("should score correctly when some answers are incorrect", () => {
-    const actual = toResults(questions, answers.someCorrect);
+    const actual = toResults(questions, answers.someCorrect as Answer[]);
 
     expect(actual).toEqual([
-      [questions[0], true],
-      [questions[1], false],
-      [questions[2], true],
-      [questions[3], true],
-      [questions[4], false],
-      [questions[5], true],
-      [questions[6], true],
-      [questions[7], true],
-      [questions[8], false],
-      [questions[9], false],
+      {
+        correct: true,
+        category: "Science & Nature",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
+      {
+        correct: false,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
+        correct_answer: "False",
+        incorrect_answers: ["True"],
+      },
+      {
+        correct: false,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "In &quot;Portal 2&quot;, Cave Johnson started out Aperture Science as a shower curtain company.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
     ]);
   });
 
   it("should score correctly when no answers are correct", () => {
-    const actual = toResults(questions, answers.noneCorrect);
+    const actual = toResults(questions, answers.noneCorrect as Answer[]);
 
     expect(actual).toEqual([
-      [questions[0], false],
-      [questions[1], false],
-      [questions[2], false],
-      [questions[3], false],
-      [questions[4], false],
-      [questions[5], false],
-      [questions[6], false],
-      [questions[7], false],
-      [questions[8], false],
-      [questions[9], false],
+      {
+        correct: false,
+        category: "Science & Nature",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
+      {
+        correct: false,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
+        correct_answer: "False",
+        incorrect_answers: ["True"],
+      },
+      {
+        correct: false,
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question:
+          "In &quot;Portal 2&quot;, Cave Johnson started out Aperture Science as a shower curtain company.",
+        correct_answer: "True",
+        incorrect_answers: ["False"],
+      },
     ]);
   });
 });

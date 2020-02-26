@@ -1,5 +1,19 @@
 import React from "react";
-import { Answer, Question } from "../../App";
+
+import { Answer, Question, QuestionResult } from "../../App";
+import { toResults } from "../quiz/Quiz.view";
+
+const Result: React.FC<QuestionResult> = ({
+  question,
+  correct,
+  correct_answer,
+}) => (
+  <div>
+    <p>{correct ? "✔️" : "❌"}</p>
+    <p>{question}</p>
+    {!correct && <p>Correct Answer: {correct_answer}</p>}
+  </div>
+);
 
 type ResultsProps = {
   questions: Question[];
@@ -12,18 +26,21 @@ export const Results: React.FC<ResultsProps> = ({
   questions,
   onQuizRestarted,
 }) => {
-  const score = questions.filter((q, i) => q.correct_answer === answers[i])
-    .length;
+  const results = toResults(questions, answers);
+  const score = results.filter(Boolean).length;
 
   return (
     <div>
       <h1>
         You scored {score} / {questions.length}
       </h1>
-      <p>Your Answers</p>
-      <pre>{JSON.stringify(answers)}</pre>
-      <p>Correct Answers</p>
-      <pre>{JSON.stringify(questions.map(q => q.correct_answer))}</pre>
+      <div>
+        <ul>
+          {results.map(r => (
+            <Result {...r} />
+          ))}
+        </ul>
+      </div>
       <button onClick={onQuizRestarted}>Play Again?</button>
     </div>
   );

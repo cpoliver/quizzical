@@ -1,7 +1,7 @@
 import React from "react";
 import { zipWith } from "ramda";
 
-import { Answer, Question } from "../../App";
+import { Answer, Question, QuestionResult } from "../../App";
 
 type QuizProps = {
   questions: Question[];
@@ -9,10 +9,10 @@ type QuizProps = {
   onQuestionAnswered: (answer: Answer) => void;
 };
 
-const checkAnswer = (question: Question, answer: Answer) => [
-  question,
-  question.correct_answer === answer,
-];
+const checkAnswer = (question: Question, answer: Answer): QuestionResult => ({
+  ...question,
+  correct: question.correct_answer === answer,
+});
 
 export const toResults = (questions: Question[], answers: Answer[]) =>
   zipWith(checkAnswer, questions, answers);

@@ -8,7 +8,7 @@ import { useState } from "react";
 
 type QuizState = "init" | "started" | "finished";
 
-export type Answer = string | "True" | "False";
+export type Answer = "True" | "False";
 
 export type Question = {
   category: string;
@@ -18,6 +18,8 @@ export type Question = {
   correct_answer: Answer;
   incorrect_answers: Answer[];
 };
+
+export type QuestionResult = Question & { correct: boolean };
 
 export const App: React.FC = () => {
   const [quizState, setQuizState] = useState<QuizState>("init");
