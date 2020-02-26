@@ -1,6 +1,7 @@
 import React from "react";
 import { zipWith } from "ramda";
 
+import { Html } from "../../common/Html";
 import { Answer, Question, QuestionResult } from "../../App";
 
 type QuizProps = {
@@ -29,7 +30,7 @@ export const Quiz: React.FC<QuizProps> = ({
     <div>
       <h1>{q.category}</h1>
       <div>
-        <div dangerouslySetInnerHTML={{ __html: q.question }} />
+        <Html html={q.question} />
       </div>
       <p>
         {currentQuestion + 1} of {questions.length}

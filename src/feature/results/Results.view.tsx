@@ -2,6 +2,7 @@ import React from "react";
 
 import { Answer, Question, QuestionResult } from "../../App";
 import { toResults } from "../quiz/Quiz.view";
+import { Html } from "../../common/Html";
 
 const Result: React.FC<QuestionResult> = ({
   question,
@@ -11,7 +12,7 @@ const Result: React.FC<QuestionResult> = ({
 }) => (
   <div>
     <p>
-      {is_correct ? "✔️" : "❌"} {question}
+      {is_correct ? "✔️" : "❌"} <Html html={question} />
     </p>
     <small>{!is_correct && <p>Correct Answer: {correct_answer}</p>}</small>
     <small>
