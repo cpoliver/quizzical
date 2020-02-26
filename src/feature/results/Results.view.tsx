@@ -5,13 +5,18 @@ import { toResults } from "../quiz/Quiz.view";
 
 const Result: React.FC<QuestionResult> = ({
   question,
-  correct,
+  is_correct,
   correct_answer,
+  given_answer,
 }) => (
   <div>
-    <p>{correct ? "✔️" : "❌"}</p>
-    <p>{question}</p>
-    {!correct && <p>Correct Answer: {correct_answer}</p>}
+    <p>
+      {is_correct ? "✔️" : "❌"} {question}
+    </p>
+    <small>{!is_correct && <p>Correct Answer: {correct_answer}</p>}</small>
+    <small>
+      <p>Your Answer: {given_answer}</p>
+    </small>
   </div>
 );
 

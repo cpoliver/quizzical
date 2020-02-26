@@ -19,7 +19,11 @@ export type Question = {
   incorrect_answers: Answer[];
 };
 
-export type QuestionResult = Question & { correct: boolean };
+// I prefer camelCase in JS, but will stick with snake_case for consistency
+export type QuestionResult = Question & {
+  is_correct: boolean;
+  given_answer: Answer;
+};
 
 export const App: React.FC = () => {
   const [quizState, setQuizState] = useState<QuizState>("init");

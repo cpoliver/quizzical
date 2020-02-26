@@ -18,7 +18,8 @@ describe("toResults", () => {
 
     expect(actual).toEqual([
       {
-        correct: true,
+        is_correct: true,
+        given_answer: "True",
         category: "Science & Nature",
         type: "boolean",
         difficulty: "hard",
@@ -28,7 +29,8 @@ describe("toResults", () => {
         incorrect_answers: ["False"],
       },
       {
-        correct: true,
+        is_correct: true,
+        given_answer: "False",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",
@@ -38,7 +40,8 @@ describe("toResults", () => {
         incorrect_answers: ["True"],
       },
       {
-        correct: true,
+        is_correct: true,
+        given_answer: "True",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",
@@ -55,7 +58,8 @@ describe("toResults", () => {
 
     expect(actual).toEqual([
       {
-        correct: true,
+        is_correct: true,
+        given_answer: "True",
         category: "Science & Nature",
         type: "boolean",
         difficulty: "hard",
@@ -65,7 +69,8 @@ describe("toResults", () => {
         incorrect_answers: ["False"],
       },
       {
-        correct: false,
+        is_correct: false,
+        given_answer: "True",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",
@@ -75,7 +80,8 @@ describe("toResults", () => {
         incorrect_answers: ["True"],
       },
       {
-        correct: false,
+        is_correct: false,
+        given_answer: "False",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",
@@ -92,7 +98,8 @@ describe("toResults", () => {
 
     expect(actual).toEqual([
       {
-        correct: false,
+        is_correct: false,
+        given_answer: "False",
         category: "Science & Nature",
         type: "boolean",
         difficulty: "hard",
@@ -102,7 +109,8 @@ describe("toResults", () => {
         incorrect_answers: ["False"],
       },
       {
-        correct: false,
+        is_correct: false,
+        given_answer: "True",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",
@@ -112,7 +120,8 @@ describe("toResults", () => {
         incorrect_answers: ["True"],
       },
       {
-        correct: false,
+        is_correct: false,
+        given_answer: "False",
         category: "Entertainment: Video Games",
         type: "boolean",
         difficulty: "hard",

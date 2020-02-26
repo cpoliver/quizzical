@@ -11,7 +11,8 @@ type QuizProps = {
 
 const checkAnswer = (question: Question, answer: Answer): QuestionResult => ({
   ...question,
-  correct: question.correct_answer === answer,
+  given_answer: answer,
+  is_correct: question.correct_answer === answer,
 });
 
 export const toResults = (questions: Question[], answers: Answer[]) =>
