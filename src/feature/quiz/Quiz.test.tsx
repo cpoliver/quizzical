@@ -4,7 +4,7 @@ import { Answer, Question } from "../../common/constants";
 import { questions as allQuestions } from "./quizData";
 import { toResults } from "./Quiz.view";
 
-const questions: Question[] = take(3, allQuestions);
+const questions: Question[] = allQuestions;
 
 const answers = {
   allCorrect: ["True", "False", "True"],

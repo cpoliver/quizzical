@@ -1,23 +1,41 @@
 import React, { createContext, useReducer } from "react";
-import { propOr } from "ramda";
+import { propOr, evolve, append, merge } from "ramda";
 
-import { QuizState } from "../constants";
+import { Answer, Question, QuizState } from "../constants";
 import { Action } from "./actions";
 
 type StoreState = {
   quizState: QuizState;
+  error: boolean;
+  isLoading: boolean;
+  answers: Answer[];
+  questions: Question[];
 };
 
 const initState: StoreState = {
   quizState: "init",
+  error: false,
+  isLoading: false,
+  answers: [],
+  questions: [],
 };
 
 const dispatch: React.Dispatch<Action> = () => {};
 
-const reducer: React.Reducer<StoreState, Action> = (state, action) =>
-  propOr(state, action.type, {
-    SET_QUIZ_STATE: { ...state, quizState: action.payload },
+const reducer: React.Reducer<StoreState, Action> = (
+  state,
+  [actionType, payload],
+) => {
+  return propOr(state, actionType, {
+    SET_QUIZ_STATE: merge(state, { quizState: payload }),
+    FETCH_QUESTIONS: merge(state, { isLoading: true }),
+    FETCH_QUESTIONS_COMPLETE: merge({
+      isLoading: false,
+      questions: payload,
+    }),
+    ANSWER_QUESTION: evolve({ answers: append(payload) }, state),
   });
+};
 
 export const store = createContext({ state: initState, dispatch });
 

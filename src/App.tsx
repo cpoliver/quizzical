@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { Answer, QuizState } from "./common/constants";
 import { store } from "./common/state/Store";
@@ -6,23 +6,21 @@ import { questions } from "./feature/quiz/quizData";
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
 import { Results } from "./feature/results/Results.view";
-import { Settings } from "./feature/settings/Settings.view";
+// import { Settings } from "./feature/settings/Settings.view";
 
 export const App: React.FC = () => {
   const { state, dispatch } = useContext(store);
 
-  const { quizState } = state;
+  const { answers, quizState } = state;
 
   const setQuizState = (quizState: QuizState) =>
-    dispatch({ type: "SET_QUIZ_STATE", payload: quizState });
-
-  const [answers, setAnswers] = useState<Answer[]>([]);
+    dispatch(["SET_QUIZ_STATE", quizState]);
 
   const currentQuestion = answers.length;
   const lastQuestion = questions.length - 1;
 
   const handleQuestionAnswered = (answer: Answer) => {
-    setAnswers([...answers, answer]);
+    dispatch(["ANSWER_QUESTION", answer]);
 
     if (currentQuestion === lastQuestion) {
       setQuizState("finished");
@@ -50,11 +48,9 @@ export const App: React.FC = () => {
           answers={answers}
           onQuizRestarted={() => {
             setQuizState("init");
-            setAnswers([]);
           }}
         />
       )}
-      {false && <Settings />}
     </div>
   );
 };
