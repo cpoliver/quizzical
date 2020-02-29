@@ -4,6 +4,9 @@ export type Language = keyof typeof LANGUAGE;
 export const THEME = ["dark", "light", "g2i"];
 export type Theme = keyof typeof THEME;
 
+export const DIFFICULTY = ["easy", "medium", "hard"];
+export type Difficulty = keyof typeof DIFFICULTY;
+
 export type Answer = "True" | "False";
 
 export type Question = {
