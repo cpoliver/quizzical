@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
+import { store } from "./common/Store";
 import { questions } from "./feature/quiz/quizData";
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
 import { Results } from "./feature/results/Results.view";
 import { Settings } from "./feature/settings/Settings.view";
-import { useState } from "react";
 
 type QuizState = "init" | "started" | "finished";
 
@@ -27,6 +27,11 @@ export type QuestionResult = Question & {
 };
 
 export const App: React.FC = () => {
+  const { state, dispatch } = useContext(store);
+
+  console.clear();
+  console.log(state.message);
+
   const [quizState, setQuizState] = useState<QuizState>("init");
   const [answers, setAnswers] = useState<Answer[]>([]);
 
