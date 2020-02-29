@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { DIFFICULTY } from "../../common/constants";
+import { store } from "../../common/state/Store";
 
-type HomeProps = {
-  onQuizStarted: () => void;
-  questionCount: number;
-};
+export const Home: React.FC = ({}) => {
+  const { state, dispatch } = useContext(store);
 
-export const Home: React.FC<HomeProps> = ({ onQuizStarted }) => {
   const [questionCount, setQuestionCount] = useState(10);
 
   return (
@@ -20,9 +20,7 @@ export const Home: React.FC<HomeProps> = ({ onQuizStarted }) => {
         value={questionCount}
         min={5}
         max={50}
-        onChange={({ currentTarget }) =>
-          setQuestionCount(parseInt(currentTarget.value, 10))
-        }
+        onChange={({ currentTarget }) => setQuestionCount(+currentTarget.value)}
       />
       <select>
         {DIFFICULTY.map(d => (
@@ -31,7 +29,7 @@ export const Home: React.FC<HomeProps> = ({ onQuizStarted }) => {
           </option>
         ))}
       </select>
-      <button onClick={onQuizStarted}>Begin</button>
+      <Link to="/quiz">Begin</Link>
     </div>
   );
 };

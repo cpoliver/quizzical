@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
-import { Answer, Question, QuestionResult } from "../../common/constants";
-import { toResults } from "../quiz/Quiz.view";
+import { toResults } from "./resultUtils";
+import { store } from "../../common/state/Store";
+import { QuestionResult } from "../../common/constants";
 import { Html } from "../../common/Html";
 
 const Result: React.FC<QuestionResult> = ({
@@ -21,17 +23,11 @@ const Result: React.FC<QuestionResult> = ({
   </div>
 );
 
-type ResultsProps = {
-  questions: Question[];
-  answers: Answer[];
-  onQuizRestarted: () => void;
-};
+export const Results: React.FC = () => {
+  const { state, dispatch } = useContext(store);
 
-export const Results: React.FC<ResultsProps> = ({
-  answers,
-  questions,
-  onQuizRestarted,
-}) => {
+  const { answers, questions } = state;
+
   const results = toResults(questions, answers);
   const score = results.filter(Boolean).length;
 
@@ -47,7 +43,8 @@ export const Results: React.FC<ResultsProps> = ({
           ))}
         </ul>
       </div>
-      <button onClick={onQuizRestarted}>Play Again?</button>
+      <Link to="/quiz">Play Again?</Link>
+      <Link to="/">Main Menu</Link>
     </div>
   );
 };

@@ -1,14 +1,8 @@
-import React from "react";
-import { zipWith } from "ramda";
+import React, { useContext } from "react";
 
 import { Html } from "../../common/Html";
+import { store } from "../../common/state/Store";
 import { Answer, Question, QuestionResult } from "../../common/constants";
-
-type QuizProps = {
-  questions: Question[];
-  currentQuestion: number;
-  onQuestionAnswered: (answer: Answer) => void;
-};
 
 const checkAnswer = (question: Question, answer: Answer): QuestionResult => ({
   ...question,
@@ -16,28 +10,27 @@ const checkAnswer = (question: Question, answer: Answer): QuestionResult => ({
   is_correct: question.correct_answer === answer,
 });
 
-export const toResults = (questions: Question[], answers: Answer[]) =>
-  zipWith(checkAnswer, questions, answers);
-
-export const Quiz: React.FC<QuizProps> = ({
-  questions,
-  currentQuestion,
-  onQuestionAnswered,
-}) => {
-  const q = questions[currentQuestion];
+export const Quiz: React.FC = () => {
+  const { state, dispatch } = useContext(store);
+  const { currentQuestionIndex, questions } = state;
+  const { question, category } = questions[currentQuestionIndex];
 
   return (
     <div>
-      <h1>{q.category}</h1>
+      <h1>{category}</h1>
       <div>
-        <Html html={q.question} />
+        <Html html={question} />
       </div>
       <p>
-        {currentQuestion + 1} of {questions.length}
+        {currentQuestionIndex + 1} of {questions.length}
       </p>
       <div>
-        <button onClick={() => onQuestionAnswered("True")}>TRUE</button>
-        <button onClick={() => onQuestionAnswered("False")}>FALSE</button>
+        <button onClick={() => dispatch(["ANSWER_QUESTION", "True"])}>
+          TRUE
+        </button>
+        <button onClick={() => dispatch(["ANSWER_QUESTION", "False"])}>
+          FALSE
+        </button>
       </div>
     </div>
   );
