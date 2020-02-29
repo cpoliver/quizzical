@@ -42,7 +42,7 @@ export const Results: React.FC<ResultsProps> = ({
       </h1>
       <div>
         <ul>
-          {results.map(r => (
+          {results.map((r: QuestionResult) => (
             <Result {...r} />
           ))}
         </ul>

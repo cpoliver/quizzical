@@ -1,10 +1,10 @@
 import { take } from "ramda";
 
-import { Answer } from "../../App";
+import { Answer, Question } from "../../App";
 import { questions as allQuestions } from "./quizData";
 import { toResults } from "./Quiz.view";
 
-const questions = take(3, allQuestions);
+const questions: Question[] = take(3, allQuestions);
 
 const answers = {
   allCorrect: ["True", "False", "True"],

@@ -4,6 +4,7 @@ import { questions } from "./feature/quiz/quizData";
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
 import { Results } from "./feature/results/Results.view";
+import { Settings } from "./feature/settings/Settings.view";
 import { useState } from "react";
 
 type QuizState = "init" | "started" | "finished";
@@ -65,6 +66,7 @@ export const App: React.FC = () => {
           }}
         />
       )}
+      {false && <Settings />}
     </div>
   );
 };
