@@ -2,7 +2,7 @@ import React from "react";
 import { zipWith } from "ramda";
 
 import { Html } from "../../common/Html";
-import { Answer, Question, QuestionResult } from "../../App";
+import { Answer, Question, QuestionResult } from "../../common/constants";
 
 type QuizProps = {
   questions: Question[];

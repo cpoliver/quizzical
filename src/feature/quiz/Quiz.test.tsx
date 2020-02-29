@@ -1,6 +1,6 @@
 import { take } from "ramda";
 
-import { Answer, Question } from "../../App";
+import { Answer, Question } from "../../common/constants";
 import { questions as allQuestions } from "./quizData";
 import { toResults } from "./Quiz.view";
 

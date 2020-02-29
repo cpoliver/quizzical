@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Answer, Question, QuestionResult } from "../../App";
+import { Answer, Question, QuestionResult } from "../../common/constants";
 import { toResults } from "../quiz/Quiz.view";
 import { Html } from "../../common/Html";
 
@@ -11,9 +11,9 @@ const Result: React.FC<QuestionResult> = ({
   given_answer,
 }) => (
   <div>
-    <p>
+    <div>
       {is_correct ? "✔️" : "❌"} <Html html={question} />
-    </p>
+    </div>
     <small>{!is_correct && <p>Correct Answer: {correct_answer}</p>}</small>
     <small>
       <p>Your Answer: {given_answer}</p>
@@ -42,8 +42,8 @@ export const Results: React.FC<ResultsProps> = ({
       </h1>
       <div>
         <ul>
-          {results.map((r: QuestionResult) => (
-            <Result {...r} />
+          {results.map((r: QuestionResult, i: number) => (
+            <Result key={i} {...r} />
           ))}
         </ul>
       </div>

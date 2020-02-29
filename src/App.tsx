@@ -1,38 +1,21 @@
 import React, { useContext, useState } from "react";
 
-import { store } from "./common/Store";
+import { Answer, QuizState } from "./common/constants";
+import { store } from "./common/state/Store";
 import { questions } from "./feature/quiz/quizData";
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
 import { Results } from "./feature/results/Results.view";
 import { Settings } from "./feature/settings/Settings.view";
 
-type QuizState = "init" | "started" | "finished";
-
-export type Answer = "True" | "False";
-
-export type Question = {
-  category: string;
-  type: string;
-  difficulty: string;
-  question: string;
-  correct_answer: Answer;
-  incorrect_answers: Answer[];
-};
-
-// I prefer camelCase in JS, but will stick with snake_case for consistency
-export type QuestionResult = Question & {
-  is_correct: boolean;
-  given_answer: Answer;
-};
-
 export const App: React.FC = () => {
   const { state, dispatch } = useContext(store);
 
-  console.clear();
-  console.log(state.message);
+  const { quizState } = state;
 
-  const [quizState, setQuizState] = useState<QuizState>("init");
+  const setQuizState = (quizState: QuizState) =>
+    dispatch({ type: "SET_QUIZ_STATE", payload: quizState });
+
   const [answers, setAnswers] = useState<Answer[]>([]);
 
   const currentQuestion = answers.length;

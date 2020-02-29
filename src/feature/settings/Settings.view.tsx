@@ -1,5 +1,4 @@
 import React from "react";
-import language from "react-syntax-highlighter/languages/prism/graphql";
 
 type SettingsProps = {};
 

@@ -1,4 +1,4 @@
-import { Question } from "../../App";
+import { Question } from "../../common/constants";
 
 export const questions: Question[] = [
   {

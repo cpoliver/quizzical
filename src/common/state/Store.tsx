@@ -1,19 +1,15 @@
 import React, { createContext, useReducer } from "react";
 import { propOr } from "ramda";
 
-type ActionType = "SET_QUIZ_STATE" | string;
-
-type Action = {
-  type: ActionType;
-  payload: any;
-};
+import { QuizState } from "../constants";
+import { Action } from "./actions";
 
 type StoreState = {
-  message: string;
+  quizState: QuizState;
 };
 
-const initState = {
-  message: "hello from ze store",
+const initState: StoreState = {
+  quizState: "init",
 };
 
 const dispatch: React.Dispatch<Action> = () => {};
