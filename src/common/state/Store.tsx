@@ -11,7 +11,7 @@ type StoreState = {
   isLoading: boolean;
   answers: Answer[];
   questions: Question[];
-  currentQuestionIndex: number;
+  currentQuestion: number;
 };
 
 const initState: StoreState = {
@@ -20,7 +20,7 @@ const initState: StoreState = {
   isLoading: false,
   answers: [],
   questions: staticQuestions,
-  currentQuestionIndex: 0,
+  currentQuestion: 0,
 };
 
 const dispatch: React.Dispatch<Action> = () => {};
@@ -37,10 +37,9 @@ const reducer: React.Reducer<StoreState, Action> = (
       questions: payload,
     }),
     ANSWER_QUESTION: evolve(
-      { answers: append(payload), currentQuestionIndex: inc },
+      { answers: append(payload), currentQuestion: inc },
       state,
     ),
-    // ANSWER_QUESTION: { ...state, answers: [...state.answers, payload] },
   });
 
 export const store = createContext({ state: initState, dispatch });

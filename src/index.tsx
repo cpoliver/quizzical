@@ -8,47 +8,23 @@ import { StoreProvider } from "./common/state/Store";
 
 import { Home } from "./feature/home/Home.view";
 import { Quiz } from "./feature/quiz/Quiz.view";
-import { Results } from "./feature/results/Results.view";
 import { Settings } from "./feature/settings/Settings.view";
 
-const App: React.FC = () => {
-  // const { state, dispatch } = useContext(store);
-
-  // const { answers, quizState } = state;
-
-  // const setQuizState = (quizState: QuizState) =>
-  //   dispatch(["SET_QUIZ_STATE", quizState]);
-
-  // const currentQuestion = answers.length;
-  // const lastQuestion = questions.length - 1;
-
-  // const handleQuestionAnswered = (answer: Answer) => {
-  //   dispatch(["ANSWER_QUESTION", answer]);
-
-  //   if (currentQuestion === lastQuestion) {
-  //     setQuizState("finished");
-  //   }
-  // };
-
-  return (
-    <Router>
-      <Switch>
-        <Route path="/quiz">
-          <Quiz />
-        </Route>
-        <Route path="/results">
-          <Results />
-        </Route>
-        <Route path="/settings">
-          <Settings />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+const App: React.FC = () => (
+  <Router>
+    <Switch>
+      <Route path="/quiz">
+        <Quiz />
+      </Route>
+      <Route path="/settings">
+        <Settings />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </Router>
+);
 
 ReactDOM.render(
   <StoreProvider>

@@ -1,8 +1,8 @@
 import { take } from "ramda";
 
 import { Answer, Question } from "../../common/constants";
-import { questions as allQuestions } from "../quiz/quizData";
-import { toResults } from "./resultUtils";
+import { questions as allQuestions } from "./quizData";
+import { toResults } from "./quizUtils";
 
 const questions: Question[] = take(3, allQuestions);
 
