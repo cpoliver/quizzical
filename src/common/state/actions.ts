@@ -4,7 +4,7 @@ export type Action =
   | ResetQuizStateAction
   | FetchQuestionsAction
   | FetchQuestionsSuccessAction
-  | FetchQuestionsFailAction
+  | FetchQuestionsErrorAction
   | AnswerQuestionAction
   | SkipQuestionAction;
 
@@ -14,7 +14,7 @@ type FetchQuestionsAction = ["FETCH_QUESTIONS"];
 
 type FetchQuestionsSuccessAction = ["FETCH_QUESTIONS_SUCCESS", Question[]];
 
-type FetchQuestionsFailAction = ["FETCH_QUESTIONS_FAIL", string];
+type FetchQuestionsErrorAction = ["FETCH_QUESTIONS_ERROR", string];
 
 type AnswerQuestionAction = ["ANSWER_QUESTION", Answer];
 
