@@ -14,7 +14,7 @@ type StoreState = {
   currentQuestion: number;
 };
 
-const initState: StoreState = {
+export const initState: StoreState = {
   quizState: "init",
   error: false,
   isLoading: false,
@@ -25,7 +25,7 @@ const initState: StoreState = {
 
 const dispatch: React.Dispatch<Action> = () => {};
 
-const reducer: React.Reducer<StoreState, Action> = (
+export const reducer: React.Reducer<StoreState, Action> = (
   state,
   [actionType, payload],
 ) =>

@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { store } from "../../common/state/Store";
 
 import { DIFFICULTY } from "../../common/constants";
 
 export const Home: React.FC = ({}) => {
+  const { dispatch } = useContext(store);
   const [questionCount, setQuestionCount] = useState(10);
 
   return (
