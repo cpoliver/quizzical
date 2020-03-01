@@ -1,24 +1,32 @@
-import { initState, reducer } from "./Store";
+import { evolve, take, inc } from "ramda";
 
-describe("set quiz state", () => {
+import { initState, reducer, StoreState } from "./Store";
+import { Answer } from "../constants";
+
+const alteredState: StoreState = evolve(
+  {
+    currentQuestion: inc,
+    questions: take(2),
+    answers: (): Answer[] => ["True", "False"],
+  },
+  initState,
+);
+
+describe("reset quiz state", () => {
   it("should update the quizState", () => {
-    const toInit = reducer(initState, ["SET_QUIZ_STATE", "init"]);
-    const toStarted = reducer(initState, ["SET_QUIZ_STATE", "started"]);
-    const toFinished = reducer(initState, ["SET_QUIZ_STATE", "finished"]);
+    const actual = reducer(alteredState, ["RESET_QUIZ_STATE"]);
 
-    expect(toInit).toEqual({
-      ...initState,
-      quizState: "init",
-    });
-
-    expect(toStarted).toEqual({
-      ...initState,
-      quizState: "started",
-    });
-
-    expect(toFinished).toEqual({
-      ...initState,
-      quizState: "finished",
-    });
+    expect(actual).toEqual(initState);
   });
 });
+
+// initialize quiz
+
+// load questions
+// loading, success, error
+
+// update settings
+
+// answer question
+
+// skip question

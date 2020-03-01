@@ -1,11 +1,11 @@
-export const LANGUAGE = ["english", "spanish", "shouty_english"];
-export type Language = keyof typeof LANGUAGE;
+export const LANGUAGE = ["english", "spanish", "shouty_english"] as const;
+export type Language = typeof LANGUAGE[number];
 
-export const THEME = ["dark", "light", "g2i"];
-export type Theme = keyof typeof THEME;
+export const THEME = ["default", "dark", "g2i"] as const;
+export type Theme = typeof THEME[number];
 
-export const DIFFICULTY = ["easy", "medium", "hard"];
-export type Difficulty = keyof typeof DIFFICULTY;
+export const DIFFICULTY = ["easy", "medium", "hard"] as const;
+export type Difficulty = typeof DIFFICULTY[number];
 
 export type Answer = "True" | "False";
 
@@ -22,5 +22,3 @@ export type QuestionResult = Question & {
   is_correct: boolean;
   given_answer: Answer;
 };
-
-export type QuizState = "init" | "started" | "finished";

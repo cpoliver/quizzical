@@ -2,8 +2,8 @@ import React from "react";
 
 type SettingsProps = {};
 
-const languages = ["English", "Spanish", "SHOUTY ENGLISH"];
-const themes = ["Light", "Dark", "G2i"];
+const languages = ["English", "Spanish", "Shouty English"];
+const themes = ["Default", "Dark", "G2i"];
 
 export const Settings: React.FC<SettingsProps> = ({}) => {
   return (

@@ -2,11 +2,10 @@ import React, { createContext, useReducer } from "react";
 import { propOr, evolve, append, merge, inc } from "ramda";
 
 import { Action } from "./actions";
-import { Answer, Question, QuizState } from "../constants";
+import { Answer, Question, Language, Theme } from "../constants";
 import { questions as staticQuestions } from "../../feature/quiz/quizData";
 
-type StoreState = {
-  quizState: QuizState;
+type QuizState = {
   error: boolean;
   isLoading: boolean;
   answers: Answer[];
@@ -14,13 +13,31 @@ type StoreState = {
   currentQuestion: number;
 };
 
-export const initState: StoreState = {
-  quizState: "init",
+const initQuizState: QuizState = {
   error: false,
   isLoading: false,
   answers: [],
   questions: staticQuestions,
   currentQuestion: 0,
+};
+
+type SettingsState = {
+  language: Language;
+  theme: Theme;
+  showIntroAnimations: boolean;
+};
+
+const initSettingsState: SettingsState = {
+  language: "english",
+  theme: "default",
+  showIntroAnimations: true,
+};
+
+export type StoreState = QuizState & SettingsState;
+
+export const initState: StoreState = {
+  ...initQuizState,
+  ...initSettingsState,
 };
 
 const dispatch: React.Dispatch<Action> = () => {};
@@ -30,7 +47,7 @@ export const reducer: React.Reducer<StoreState, Action> = (
   [actionType, payload],
 ) =>
   propOr(state, actionType, {
-    SET_QUIZ_STATE: merge(state, { quizState: payload }),
+    RESET_QUIZ_STATE: merge(state, initQuizState),
     FETCH_QUESTIONS: merge(state, { isLoading: true }),
     FETCH_QUESTIONS_COMPLETE: merge({
       isLoading: false,
