@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { toResults } from "./quizUtils";
-import { Html } from "../../common/Html";
+import { Html } from "../../common/components/Html";
 import { store } from "../../common/state/Store";
 import { QuestionResult } from "../../common/constants";
 

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { store } from "../../common/state/Store";
-import { Html } from "../../common/Html";
+import { Html } from "../../common/components/Html";
 
 export const Question: React.FC = () => {
   const { state, dispatch } = useContext(store);
