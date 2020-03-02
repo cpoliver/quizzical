@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "theme-ui";
+import theme from "@rebass/preset";
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -27,9 +29,11 @@ const App: React.FC = () => (
 );
 
 ReactDOM.render(
-  <StoreProvider>
-    <App />
-  </StoreProvider>,
+  <ThemeProvider theme={theme}>
+    <StoreProvider>
+      <App />
+    </StoreProvider>
+  </ThemeProvider>,
   document.getElementById("root"),
 );
 
