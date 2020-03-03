@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { toResults } from "./quizUtils";
-import { Html } from "../../common/Html";
+import { Html } from "../../common/components/Html";
 import { store } from "../../common/state/Store";
 import { QuestionResult } from "../../common/constants";
 
 export const Results: React.FC = () => {
   const {
     state: { questions, answers },
+    dispatch,
   } = useContext(store);
 
   const results = toResults(questions, answers);
@@ -35,7 +36,9 @@ export const Results: React.FC = () => {
           ))}
         </ul>
       </div>
-      <Link to="/quiz">Play Again?</Link>
+      <button onClick={() => dispatch(["RESET_QUIZ_STATE"])}>
+        Play Again?
+      </button>
       <Link to="/">Main Menu</Link>
     </div>
   );
