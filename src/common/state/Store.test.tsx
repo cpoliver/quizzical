@@ -4,7 +4,7 @@ import { initState, reducer, StoreState } from "./Store";
 import { Answer } from "../constants";
 import { questions } from "../../feature/quiz/quizData";
 
-const state = {
+const state: { [key: string]: StoreState } = {
   init: initState,
   loading: {
     ...initState,
@@ -17,7 +17,7 @@ const state = {
       answers: (): Answer[] => ["True", "False"],
     },
     initState,
-  ),
+  ) as StoreState,
 };
 
 describe("reset quiz state", () => {

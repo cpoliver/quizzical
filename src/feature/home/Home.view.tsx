@@ -4,7 +4,7 @@ import { store } from "../../common/state/Store";
 
 import { DIFFICULTY } from "../../common/constants";
 
-export const Home: React.FC = ({}) => {
+export const Home: React.FC = () => {
   const { dispatch } = useContext(store);
   const [questionCount, setQuestionCount] = useState(10);
 

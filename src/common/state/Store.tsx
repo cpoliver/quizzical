@@ -21,7 +21,7 @@ const initQuizState: QuizState = {
   currentQuestion: 0,
 };
 
-type SettingsState = {
+export type SettingsState = {
   language: Language;
   theme: Theme;
   showIntroAnimations: boolean;

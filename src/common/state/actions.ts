@@ -1,12 +1,5 @@
-import { Answer, Question, Language, Theme } from "../constants";
-
-export type Action =
-  | ResetQuizStateAction
-  | FetchQuestionsAction
-  | FetchQuestionsSuccessAction
-  | FetchQuestionsErrorAction
-  | AnswerQuestionAction
-  | SkipQuestionAction;
+import { SettingsState } from "./Store";
+import { Answer, Question } from "../constants";
 
 type ResetQuizStateAction = ["RESET_QUIZ_STATE"];
 
@@ -19,3 +12,14 @@ type FetchQuestionsErrorAction = ["FETCH_QUESTIONS_ERROR", string];
 type AnswerQuestionAction = ["ANSWER_QUESTION", Answer];
 
 type SkipQuestionAction = ["SKIP_QUESTION"];
+
+type UpdateSettingsAction = ["UPDATE_SETTINGS", Partial<SettingsState>];
+
+export type Action =
+  | ResetQuizStateAction
+  | FetchQuestionsAction
+  | FetchQuestionsSuccessAction
+  | FetchQuestionsErrorAction
+  | AnswerQuestionAction
+  | SkipQuestionAction
+  | UpdateSettingsAction;
