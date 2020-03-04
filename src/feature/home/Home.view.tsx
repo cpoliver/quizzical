@@ -7,6 +7,8 @@ import { Difficulty, DIFFICULTY } from "../../common/constants";
 export const Home: React.FC = () => {
   const { state, dispatch } = useContext(store);
 
+  if (state.questions.length) dispatch(["RESET_QUIZ_STATE"]);
+
   const { questionCount, difficulty } = state;
 
   return (
