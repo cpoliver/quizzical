@@ -1,25 +1,24 @@
-import { SettingsState } from "./Store";
-import { Answer, Question } from "../constants";
+import { AppSettingsState } from "./Store";
+import { Answer, Question, Difficulty } from "../constants";
 
 type ResetQuizStateAction = ["RESET_QUIZ_STATE"];
-
-type FetchQuestionsAction = ["FETCH_QUESTIONS"];
-
-type FetchQuestionsSuccessAction = ["FETCH_QUESTIONS_SUCCESS", Question[]];
-
-type FetchQuestionsErrorAction = ["FETCH_QUESTIONS_ERROR", string];
-
 type AnswerQuestionAction = ["ANSWER_QUESTION", Answer];
 
-type SkipQuestionAction = ["SKIP_QUESTION"];
+type UpdateDifficultyAction = ["UPDATE_DIFFICULTY", Difficulty];
+type UpdateQuestionCountAction = ["UPDATE_QUESTION_COUNT", number];
 
-type UpdateSettingsAction = ["UPDATE_SETTINGS", Partial<SettingsState>];
+type UpdateSettingsAction = ["UPDATE_SETTINGS", Partial<AppSettingsState>];
+
+type FetchQuestionsAction = ["FETCH_QUESTIONS"];
+type FetchQuestionsSuccessAction = ["FETCH_QUESTIONS_SUCCESS", Question[]];
+type FetchQuestionsErrorAction = ["FETCH_QUESTIONS_ERROR", string];
 
 export type Action =
   | ResetQuizStateAction
+  | AnswerQuestionAction
+  | UpdateDifficultyAction
+  | UpdateQuestionCountAction
   | FetchQuestionsAction
   | FetchQuestionsSuccessAction
   | FetchQuestionsErrorAction
-  | AnswerQuestionAction
-  | SkipQuestionAction
   | UpdateSettingsAction;

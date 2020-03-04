@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { store } from "../../common/state/Store";
 
-import { DIFFICULTY } from "../../common/constants";
+import { Difficulty, DIFFICULTY } from "../../common/constants";
 
 export const Home: React.FC = () => {
-  const { dispatch } = useContext(store);
-  const [questionCount, setQuestionCount] = useState(10);
+  const { state, dispatch } = useContext(store);
+
+  const { questionCount, difficulty } = state;
 
   return (
     <div>
@@ -19,16 +20,23 @@ export const Home: React.FC = () => {
         value={questionCount}
         min={5}
         max={50}
-        onChange={({ currentTarget }) => setQuestionCount(+currentTarget.value)}
+        onChange={({ currentTarget }) =>
+          dispatch(["UPDATE_QUESTION_COUNT", +currentTarget.value])
+        }
       />
-      <select>
-        {DIFFICULTY.map(d => (
+      <select
+        onChange={({ currentTarget }) =>
+          dispatch(["UPDATE_DIFFICULTY", currentTarget.value as Difficulty])
+        }
+      >
+        {DIFFICULTY.map((d: Difficulty) => (
           <option key={d} value={d}>
             {d}
           </option>
         ))}
       </select>
       <Link to="/quiz">Begin</Link>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );
 };

@@ -1,9 +1,16 @@
 import React, { createContext, useReducer } from "react";
-import { always, propOr, evolve, append, merge, flip, inc } from "ramda";
+import {
+  always,
+  propOr,
+  evolve,
+  append,
+  merge as unflippedMerge,
+  flip,
+  inc,
+} from "ramda";
 
 import { Action } from "./actions";
-import { Answer, Question, Language, Theme } from "../constants";
-import { questions as staticQuestions } from "../../feature/quiz/quizData";
+import { Answer, Question, Language, Theme, Difficulty } from "../constants";
 
 type QuizState = {
   error: string | null;
@@ -17,51 +24,75 @@ const initQuizState: QuizState = {
   error: null,
   isLoading: false,
   answers: [],
-  questions: staticQuestions,
+  questions: [],
   currentQuestion: 0,
 };
 
-export type SettingsState = {
+type QuizSettingsState = {
+  difficulty: Difficulty;
+  questionCount: number;
+};
+
+const initQuizSettingsState: QuizSettingsState = {
+  difficulty: "easy",
+  questionCount: 10,
+};
+
+export type AppSettingsState = {
   language: Language;
   theme: Theme;
   showIntroAnimations: boolean;
 };
 
-const initSettingsState: SettingsState = {
+const initAppSettingsState: AppSettingsState = {
   language: "english",
   theme: "default",
   showIntroAnimations: true,
 };
 
-export type StoreState = QuizState & SettingsState;
+export type StoreState = QuizState &
+  QuizSettingsState & { settings: AppSettingsState };
 
 export const initState: StoreState = {
   ...initQuizState,
-  ...initSettingsState,
+  ...initQuizSettingsState,
+  settings: initAppSettingsState,
 };
 
 const dispatch: React.Dispatch<Action> = () => {};
 
-const mergeFlipped = flip(merge);
+const merge = flip(unflippedMerge);
 
 export const reducer: React.Reducer<StoreState, Action> = (
   state,
   [actionType, payload],
 ) => {
   const actionMap = {
-    RESET_QUIZ_STATE: mergeFlipped(initQuizState),
-    FETCH_QUESTIONS: mergeFlipped({ isLoading: true }),
-    FETCH_QUESTIONS_ERROR: mergeFlipped({
+    // Quiz State
+    RESET_QUIZ_STATE: merge(initQuizState),
+    ANSWER_QUESTION: evolve({
+      answers: append(payload),
+      currentQuestion: inc,
+    }),
+
+    // Quiz Settings
+    UPDATE_DIFFICULTY: merge({ difficulty: payload }),
+    UPDATE_QUESTION_COUNT: merge({ questionCount: payload }),
+
+    // App Settings
+    UPDATE_SETTINGS: evolve({ settings: merge(payload) }),
+
+    // Fetch Questions
+    FETCH_QUESTIONS: merge({ isLoading: true }),
+    FETCH_QUESTIONS_ERROR: merge({
       isLoading: false,
       error: payload,
     }),
-    FETCH_QUESTIONS_SUCCESS: mergeFlipped({
+    FETCH_QUESTIONS_SUCCESS: merge({
       isLoading: false,
       error: null,
       questions: payload,
     }),
-    ANSWER_QUESTION: evolve({ answers: append(payload), currentQuestion: inc }),
-    SKIP_QUESTION: evolve({ answers: append(null), currentQuestion: inc }),
   };
 
   const actionHandler: (state: StoreState) => StoreState = propOr(

@@ -1,6 +1,6 @@
 import { evolve, take, inc } from "ramda";
 
-import { initState, reducer, StoreState } from "./Store";
+import { initState, reducer, StoreState, AppSettingsState } from "./Store";
 import { Answer } from "../constants";
 import { questions } from "../../feature/quiz/quizData";
 
@@ -28,6 +28,67 @@ describe("reset quiz state", () => {
   });
 });
 
+describe("update difficulty", () => {
+  it("should update the difficulty", () => {
+    const difficulty = "hard";
+    const actual = reducer(state.init, ["UPDATE_DIFFICULTY", difficulty]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      difficulty,
+    });
+  });
+});
+
+describe("update question count", () => {
+  it("should update the question count", () => {
+    const questionCount = 42;
+    const actual = reducer(state.init, [
+      "UPDATE_QUESTION_COUNT",
+      questionCount,
+    ]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      questionCount,
+    });
+  });
+});
+
+describe("update settings", () => {
+  it("should merge the app settings when changing some settings", () => {
+    const theme = "g2i";
+    const actual = reducer(state.init, ["UPDATE_SETTINGS", { theme }]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      settings: {
+        theme,
+        language: "english",
+        showIntroAnimations: true,
+      },
+    });
+  });
+
+  it("should update the app settings when changing all settings", () => {
+    const settings = {
+      language: "spanish",
+      showIntroAnimations: false,
+      theme: "dark",
+    };
+
+    const actual = reducer(state.init, [
+      "UPDATE_SETTINGS",
+      settings as AppSettingsState,
+    ]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      settings,
+    });
+  });
+});
+
 describe("fetch questions", () => {
   it("should trigger the loading state", () => {
     const actual = reducer(state.init, ["FETCH_QUESTIONS"]);
@@ -40,7 +101,7 @@ describe("fetch questions", () => {
 });
 
 describe("fetch questions error", () => {
-  it("should update the quizState", () => {
+  it("should update the quiz state", () => {
     const error = "loading failed";
     const actual = reducer(state.loading, ["FETCH_QUESTIONS_ERROR", error]);
 
@@ -53,7 +114,7 @@ describe("fetch questions error", () => {
 });
 
 describe("fetch questions success", () => {
-  it("should update the quizState", () => {
+  it("should update the quiz state", () => {
     const actual = reducer(state.loading, [
       "FETCH_QUESTIONS_SUCCESS",
       questions,
@@ -76,18 +137,6 @@ describe("answer question", () => {
       ...state.inProgress,
       currentQuestion: 2,
       answers: ["True", "False", "True"],
-    });
-  });
-});
-
-describe("skip question", () => {
-  it("should update the answers and current question", () => {
-    const actual = reducer(state.inProgress, ["SKIP_QUESTION"]);
-
-    expect(actual).toEqual({
-      ...state.inProgress,
-      currentQuestion: 2,
-      answers: ["True", "False", null],
     });
   });
 });
