@@ -13,7 +13,10 @@ export const Home: React.FC = () => {
     <div>
       <h1>Welcome to Quizzical</h1>
       <h2>The Trivia Challenge</h2>
-      <p>You will be presented with {questionCount} True or False questions.</p>
+      <p>
+        You will be presented with {questionCount} {difficulty} True or False
+        questions.
+      </p>
       <p>Can you score 100%</p>
       <input
         type="number"
@@ -36,7 +39,6 @@ export const Home: React.FC = () => {
         ))}
       </select>
       <Link to="/quiz">Begin</Link>
-      <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );
 };

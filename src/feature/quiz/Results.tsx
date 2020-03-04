@@ -13,7 +13,8 @@ export const Results: React.FC = () => {
   } = useContext(store);
 
   const results = toResults(questions, answers);
-  const score = results.filter(Boolean).length;
+  const score = results.filter((result: QuestionResult) => result.is_correct)
+    .length;
 
   return (
     <div>
