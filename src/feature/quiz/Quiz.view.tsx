@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Flex, Box, Text, Heading } from "rebass";
 
 import { Question } from "./Question";
 import { Results } from "./Results";
@@ -21,7 +22,7 @@ export const Quiz: React.FC = () => {
   });
 
   if (!questions.length) {
-    return <p>loading...</p>;
+    return <Flex>loading...</Flex>;
   }
 
   return currentQuestion === questions.length ? <Results /> : <Question />;

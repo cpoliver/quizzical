@@ -14,8 +14,10 @@ export const Home: React.FC = () => {
 
   return (
     <Flex flexDirection="column">
-      <Heading>Welcome to Quizzical</Heading>
-      <Heading>The Trivia Challenge</Heading>
+      <Heading fontWeight="bold">LET'S GET</Heading>
+      <Heading fontWeight="bold" fontSize={6}>
+        QUiZZ!CAL
+      </Heading>
       <Text>
         You will be presented with {questionCount} {difficulty} True or False
         questions.
@@ -42,9 +44,7 @@ export const Home: React.FC = () => {
         ))}
       </select>
       <Link to="/quiz">
-        <Button color="primary" backgroundColor="primary">
-          Begin
-        </Button>
+        <Button variant="default">PLAY!</Button>
       </Link>
     </Flex>
   );

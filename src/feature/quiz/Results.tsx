@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { toResults } from "./quizUtils";
 import { Html } from "../../common/components/Html";
@@ -17,30 +18,42 @@ export const Results: React.FC = () => {
     .length;
 
   return (
-    <div>
-      <h1>
+    <Flex flexDirection="column">
+      <Heading>
         You scored {score} / {questions.length}
-      </h1>
-      <div>
-        <ul>
-          {results.map((result: QuestionResult, i: number) => (
-            <div key={i}>
-              {result.is_correct ? "✔️" : "❌"} <Html html={result.question} />
-              <small>
-                {result.is_correct ? (
-                  <p>Your Answer: {result.given_answer}</p>
-                ) : (
-                  <p>Correct Answer: {result.correct_answer}</p>
-                )}
-              </small>
-            </div>
-          ))}
-        </ul>
-      </div>
-      <button onClick={() => dispatch(["RESET_QUIZ_STATE"])}>
+      </Heading>
+      <Flex flexDirection="column">
+        {results.map((result: QuestionResult, i: number) => (
+          <Result key={i} {...result} />
+        ))}
+      </Flex>
+      <Button variant="default" onClick={() => dispatch(["RESET_QUIZ_STATE"])}>
         Play Again?
-      </button>
+      </Button>
       <Link to="/">Main Menu</Link>
-    </div>
+    </Flex>
   );
 };
+
+const Result: React.FC<QuestionResult> = ({
+  question,
+  is_correct,
+  given_answer,
+  correct_answer,
+}) => (
+  <Flex>
+    <Box>{is_correct ? "✔️" : "❌"}</Box>
+    <Flex flexDirection="column">
+      <Box>
+        <Html html={question} />
+      </Box>
+      <Box>
+        {is_correct ? (
+          <Text>Your Answer: {given_answer}</Text>
+        ) : (
+          <Text>Correct Answer: {correct_answer}</Text>
+        )}
+      </Box>
+    </Flex>
+  </Flex>
+);

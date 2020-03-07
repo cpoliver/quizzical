@@ -1,4 +1,5 @@
 import React from "react";
+import { Flex, Box, Text, Heading } from "rebass";
 
 type SettingsProps = {};
 
@@ -6,7 +7,7 @@ const languages = ["English", "Spanish", "Shouty English"];
 const themes = ["Default", "Dark", "G2i"];
 
 export const Settings: React.FC<SettingsProps> = () => (
-  <div>
+  <Flex>
     <label>
       Show Animations
       <input type="checkbox" />
@@ -27,5 +28,5 @@ export const Settings: React.FC<SettingsProps> = () => (
       </select>{" "}
       Theme
     </label>
-  </div>
+  </Flex>
 );

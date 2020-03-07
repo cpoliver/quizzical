@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { store } from "../../common/state/Store";
 import { Html } from "../../common/components/Html";
@@ -10,22 +11,28 @@ export const Question: React.FC = () => {
   const { category, question } = questions[currentQuestion];
 
   return (
-    <div>
-      <h1>{category}</h1>
-      <div>
+    <Flex flexDirection="column">
+      <Heading>{category}</Heading>
+      <Box>
         <Html html={question} />
-      </div>
-      <p>
+      </Box>
+      <Text>
         {currentQuestion + 1} of {questions.length}
-      </p>
-      <div>
-        <button onClick={() => dispatch(["ANSWER_QUESTION", "True"])}>
-          TRUE
-        </button>
-        <button onClick={() => dispatch(["ANSWER_QUESTION", "False"])}>
-          FALSE
-        </button>
-      </div>
-    </div>
+      </Text>
+      <Flex>
+        <Button
+          variant="answer"
+          onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
+        >
+          ✓
+        </Button>
+        <Button
+          variant="answer"
+          onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
+        >
+          ✘
+        </Button>
+      </Flex>
+    </Flex>
   );
 };

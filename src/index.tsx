@@ -16,7 +16,8 @@ const Shell: React.FC = ({ children }) => (
   <Flex
     sx={{
       alignItems: "center",
-      backgroundColor: "#d0d0d0",
+      backgroundColor: "background",
+      color: "primary",
       flex: 1,
       height: "100vh",
       justifyContent: "center",
@@ -25,7 +26,7 @@ const Shell: React.FC = ({ children }) => (
   >
     <Flex
       sx={{
-        background: "#fdfdfd",
+        background: "background",
         flex: 1,
         maxWidth: 900,
         height: "100%",
