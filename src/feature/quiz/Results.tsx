@@ -4,8 +4,9 @@ import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { toResults } from "./quizUtils";
 import { Html } from "../../common/components/Html";
-import { store } from "../../common/state/Store";
+import { Progress } from "../../common/components/Progress";
 import { QuestionResult } from "../../common/constants";
+import { store } from "../../common/state/Store";
 
 export const Results: React.FC = () => {
   const {
@@ -16,12 +17,18 @@ export const Results: React.FC = () => {
   const results = toResults(questions, answers);
   const score = results.filter((result: QuestionResult) => result.is_correct)
     .length;
+  const total = questions.length;
 
   return (
     <Flex flexDirection="column">
       <Heading>
-        You scored {score} / {questions.length}
+        {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}
       </Heading>
+      <Progress
+        current={score}
+        total={total}
+        label={`You answered ${score} / ${total} questions correctly`}
+      />
       <Flex flexDirection="column">
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
