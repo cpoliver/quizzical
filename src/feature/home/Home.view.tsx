@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { store } from "../../common/state/Store";
+import { Flex, Button, Box, Text, Heading } from "rebass";
 
+import { store } from "../../common/state/Store";
 import { Difficulty, DIFFICULTY } from "../../common/constants";
 
 export const Home: React.FC = () => {
@@ -12,14 +13,14 @@ export const Home: React.FC = () => {
   const { questionCount, difficulty } = state;
 
   return (
-    <div>
-      <h1>Welcome to Quizzical</h1>
-      <h2>The Trivia Challenge</h2>
-      <p>
+    <Flex flexDirection="column">
+      <Heading>Welcome to Quizzical</Heading>
+      <Heading>The Trivia Challenge</Heading>
+      <Text>
         You will be presented with {questionCount} {difficulty} True or False
         questions.
-      </p>
-      <p>Can you score 100%</p>
+      </Text>
+      <Text>Can you score 100%</Text>
       <input
         type="number"
         value={questionCount}
@@ -40,7 +41,11 @@ export const Home: React.FC = () => {
           </option>
         ))}
       </select>
-      <Link to="/quiz">Begin</Link>
-    </div>
+      <Link to="/quiz">
+        <Button color="primary" backgroundColor="primary">
+          Begin
+        </Button>
+      </Link>
+    </Flex>
   );
 };

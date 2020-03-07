@@ -17,8 +17,12 @@ export const Quiz: React.FC = () => {
       .catch(err => dispatch(["FETCH_QUESTIONS_ERROR", err]));
 
   useEffect(() => {
-    if (!state.questions.length) loadQuestions();
+    if (!questions.length) loadQuestions();
   });
+
+  if (!questions.length) {
+    return <p>loading...</p>;
+  }
 
   return currentQuestion === questions.length ? <Results /> : <Question />;
 };
