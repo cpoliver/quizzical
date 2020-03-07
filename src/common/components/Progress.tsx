@@ -23,9 +23,18 @@ export const Progress: React.FC<ProgressProps> = ({
           width={current / total}
         ></Box>
       </Flex>
-      <Text variant="body" textAlign="right" alignSelf="flex-end">
-        {label}
-      </Text>
+      {label && (
+        <Text
+          alignSelf="flex-end"
+          fontFamily="body"
+          fontSize={0}
+          fontWeight="semi"
+          mt={1}
+          textAlign="right"
+        >
+          {label}
+        </Text>
+      )}
     </Flex>
   );
 };

@@ -36,8 +36,9 @@ export const theme = {
       backgroundColor: "primary",
       color: "background",
       borderRadius: 9001,
+      fontSize: 3,
       fontFamily: "body",
-      fontWeight: "bold",
+      fontWeight: "semi",
     },
     answer: {
       backgroundColor: "transparent",

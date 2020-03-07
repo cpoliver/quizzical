@@ -20,8 +20,8 @@ export const Results: React.FC = () => {
   const total = questions.length;
 
   return (
-    <Flex flexDirection="column">
-      <Heading>
+    <Flex flexDirection="column" flex={1}>
+      <Heading fontSize={3} textAlign="center" mb={2}>
         {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}
       </Heading>
       <Progress
@@ -29,7 +29,7 @@ export const Results: React.FC = () => {
         total={total}
         label={`You answered ${score} / ${total} questions correctly`}
       />
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" overflow="scrollY">
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
         ))}

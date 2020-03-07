@@ -22,8 +22,12 @@ export const Quiz: React.FC = () => {
   });
 
   if (!questions.length) {
-    return <Flex>loading...</Flex>;
+    return <Flex flex={1}>loading...</Flex>;
   }
 
-  return currentQuestion === questions.length ? <Results /> : <Question />;
+  return (
+    <Flex flex={1}>
+      {currentQuestion === questions.length ? <Results /> : <Question />}
+    </Flex>
+  );
 };

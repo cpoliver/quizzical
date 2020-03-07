@@ -13,12 +13,16 @@ export const Question: React.FC = () => {
   const total = questions.length;
 
   return (
-    <Flex flexDirection="column">
-      <Heading>{category}</Heading>
+    <Flex flexDirection="column" flex={1}>
+      <Heading fontSize={2} textAlign="center" mb={2}>
+        {category}
+      </Heading>
       <Progress current={current} total={total} label={`${current}/${total}`} />
-      <Box>
-        <Html html={question} />
-      </Box>
+      <Flex flex={1} m={4}>
+        <Text fontFamily="body">
+          <Html html={question} />
+        </Text>
+      </Flex>
       <Flex>
         <Button
           variant="answer"
