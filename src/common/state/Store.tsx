@@ -10,7 +10,14 @@ import {
 } from "ramda";
 
 import { Action } from "./actions";
-import { Answer, Question, Language, Theme, Difficulty } from "../constants";
+import {
+  Answer,
+  Question,
+  Language,
+  Theme,
+  Difficulty,
+  DIFFICULTY,
+} from "../constants";
 
 type QuizState = {
   error: string | null;
@@ -34,7 +41,7 @@ type QuizSettingsState = {
 };
 
 const initQuizSettingsState: QuizSettingsState = {
-  difficulty: "easy",
+  difficulty: "medium",
   questionCount: 10,
 };
 
@@ -63,6 +70,9 @@ const dispatch: React.Dispatch<Action> = () => {};
 
 const merge = flip(unflippedMerge);
 
+export const difficultyToNumber = (difficulty: Difficulty) =>
+  DIFFICULTY.indexOf(difficulty);
+
 export const reducer: React.Reducer<StoreState, Action> = (
   state,
   [actionType, payload],
@@ -76,7 +86,19 @@ export const reducer: React.Reducer<StoreState, Action> = (
     }),
 
     // Quiz Settings
-    UPDATE_DIFFICULTY: merge({ difficulty: payload }),
+    INCREASE_DIFFICULTY: merge({
+      difficulty:
+        DIFFICULTY[
+          Math.min(
+            difficultyToNumber(state.difficulty) + 1,
+            DIFFICULTY.length - 1,
+          )
+        ],
+    }),
+    DECREASE_DIFFICULTY: merge({
+      difficulty:
+        DIFFICULTY[Math.max(difficultyToNumber(state.difficulty) - 1, 0)],
+    }),
     UPDATE_QUESTION_COUNT: merge({ questionCount: payload }),
 
     // App Settings

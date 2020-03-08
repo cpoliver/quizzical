@@ -1,6 +1,12 @@
 import { evolve, take, inc } from "ramda";
 
-import { initState, reducer, StoreState, AppSettingsState } from "./Store";
+import {
+  initState,
+  reducer,
+  StoreState,
+  AppSettingsState,
+  difficultyToNumber,
+} from "./Store";
 import { Answer } from "../constants";
 import { questions } from "../../feature/quiz/quizData";
 
@@ -20,6 +26,18 @@ const state: { [key: string]: StoreState } = {
   ) as StoreState,
 };
 
+describe("difficulty to number", () => {
+  it("should return the correct number for the given difficulty", () => {
+    const easy = difficultyToNumber("easy");
+    const medium = difficultyToNumber("medium");
+    const hard = difficultyToNumber("hard");
+
+    expect(easy).toEqual(0);
+    expect(medium).toEqual(1);
+    expect(hard).toEqual(2);
+  });
+});
+
 describe("reset quiz state", () => {
   it("should update the quizState", () => {
     const actual = reducer(state.inProgress, ["RESET_QUIZ_STATE"]);
@@ -28,15 +46,39 @@ describe("reset quiz state", () => {
   });
 });
 
-describe("update difficulty", () => {
-  it("should update the difficulty", () => {
-    const difficulty = "hard";
-    const actual = reducer(state.init, ["UPDATE_DIFFICULTY", difficulty]);
+describe("increase difficulty", () => {
+  it("should increase the difficulty, when not at the maximum", () => {
+    const actual = reducer(state.init, ["INCREASE_DIFFICULTY"]);
 
     expect(actual).toEqual({
       ...state.init,
-      difficulty,
+      difficulty: "hard",
     });
+  });
+
+  it("should do nothing to the difficulty, when at the maximum", () => {
+    const hardState = { ...state.init, difficulty: "hard" };
+    const actual = reducer(hardState, ["INCREASE_DIFFICULTY"]);
+
+    expect(actual).toEqual(hardState);
+  });
+});
+
+describe("decrease difficulty", () => {
+  it("should decrease the difficulty, when not at the minimum", () => {
+    const actual = reducer(state.init, ["DECREASE_DIFFICULTY"]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      difficulty: "easy",
+    });
+  });
+
+  it("should do nothing to the difficulty, when at the minimum", () => {
+    const easyState = { ...state.init, difficulty: "easy" };
+    const actual = reducer(easyState, ["DECREASE_DIFFICULTY"]);
+
+    expect(actual).toEqual(easyState);
   });
 });
 

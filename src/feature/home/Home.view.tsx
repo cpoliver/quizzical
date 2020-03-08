@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { store } from "../../common/state/Store";
-import { Difficulty, DIFFICULTY } from "../../common/constants";
+import {
+  Difficulty,
+  DIFFICULTY,
+  MAX_QUESTION_COUNT,
+  MIN_QUESTION_COUNT,
+} from "../../common/constants";
+import { QuestionSettings } from "../quiz/QuestionSettings";
 
 export const Home: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -28,23 +34,13 @@ export const Home: React.FC = () => {
         <input
           type="number"
           value={questionCount}
-          min={5}
-          max={50}
+          min={MIN_QUESTION_COUNT}
+          max={MAX_QUESTION_COUNT}
           onChange={({ currentTarget }) =>
             dispatch(["UPDATE_QUESTION_COUNT", +currentTarget.value])
           }
         />
-        <select
-          onChange={({ currentTarget }) =>
-            dispatch(["UPDATE_DIFFICULTY", currentTarget.value as Difficulty])
-          }
-        >
-          {DIFFICULTY.map((d: Difficulty) => (
-            <option key={d} value={d}>
-              {d}
-            </option>
-          ))}
-        </select>
+        <QuestionSettings />
       </Flex>
       <Link to="/quiz">
         <Button variant="default" width="100%" p={5} mt={3}>

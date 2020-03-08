@@ -22,3 +22,6 @@ export type QuestionResult = Question & {
   is_correct: boolean;
   given_answer: Answer;
 };
+
+export const MAX_QUESTION_COUNT = 100;
+export const MIN_QUESTION_COUNT = 5;
