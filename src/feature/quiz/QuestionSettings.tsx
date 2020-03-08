@@ -16,7 +16,7 @@ export const QuestionSettings: React.FC = () => {
 
   return (
     <Flex flexDirection="column" flex={1}>
-      <Flex flex={1} justifyContent="center">
+      <Flex flex={1} justifyContent="center" flexDirection="column">
         <Flex flex={1} justifyContent="center">
           <Button
             variant="answer"
@@ -28,7 +28,7 @@ export const QuestionSettings: React.FC = () => {
             <Ring
               count={questionCount}
               total={MAX_QUESTION_COUNT}
-              radius={120}
+              radius={80}
               sx={{
                 position: "absolute",
                 top: 0,
@@ -49,9 +49,15 @@ export const QuestionSettings: React.FC = () => {
                 right: 0,
               }}
             >
-              <Text fontFamily="body" fontSize={6} m={0} p={0}>
-                {questionCount}
-              </Text>
+              <Flex
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text fontFamily="body" fontSize={6} m={0} p={0}>
+                  {questionCount}
+                </Text>
+              </Flex>
             </Flex>
           </Box>
           <Button
@@ -61,24 +67,29 @@ export const QuestionSettings: React.FC = () => {
             +
           </Button>
         </Flex>
-      </Flex>
-      <Flex alignItems="center">
-        <Button
-          variant="answer"
-          onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
-        >
-          &lt;
-        </Button>
-        <Text>
-          <strong>Difficulty:</strong>
-          {difficulty}
-        </Text>
-        <Button
-          variant="answer"
-          onClick={() => dispatch(["INCREASE_DIFFICULTY"])}
-        >
-          &gt;
-        </Button>
+        <Flex alignItems="center">
+          <Button
+            variant="answer"
+            onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
+          >
+            &lt;
+          </Button>
+          <Text
+            fontFamily="body"
+            fontSize={1}
+            m={0}
+            p={0}
+            sx={{ textTransform: "uppercase" }}
+          >
+            {difficulty}
+          </Text>
+          <Button
+            variant="answer"
+            onClick={() => dispatch(["INCREASE_DIFFICULTY"])}
+          >
+            &gt;
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   );
