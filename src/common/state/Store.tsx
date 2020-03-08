@@ -17,6 +17,9 @@ import {
   Theme,
   Difficulty,
   DIFFICULTY,
+  MAX_QUESTION_COUNT,
+  QUESTION_COUNT_INCREMENT,
+  MIN_QUESTION_COUNT,
 } from "../constants";
 
 type QuizState = {
@@ -42,7 +45,7 @@ type QuizSettingsState = {
 
 const initQuizSettingsState: QuizSettingsState = {
   difficulty: "medium",
-  questionCount: 10,
+  questionCount: QUESTION_COUNT_INCREMENT * 2,
 };
 
 export type AppSettingsState = {
@@ -99,7 +102,18 @@ export const reducer: React.Reducer<StoreState, Action> = (
       difficulty:
         DIFFICULTY[Math.max(difficultyToNumber(state.difficulty) - 1, 0)],
     }),
-    UPDATE_QUESTION_COUNT: merge({ questionCount: payload }),
+    INCREASE_QUESTION_COUNT: merge({
+      questionCount: Math.min(
+        state.questionCount + QUESTION_COUNT_INCREMENT,
+        MAX_QUESTION_COUNT,
+      ),
+    }),
+    DECREASE_QUESTION_COUNT: merge({
+      questionCount: Math.max(
+        state.questionCount - QUESTION_COUNT_INCREMENT,
+        MIN_QUESTION_COUNT,
+      ),
+    }),
 
     // App Settings
     UPDATE_SETTINGS: evolve({ settings: merge(payload) }),

@@ -17,37 +17,45 @@ export const QuestionSettings: React.FC = () => {
   return (
     <Flex flexDirection="column" flex={1}>
       <Flex flex={1} justifyContent="center">
-        <Button
-          variant="answer"
-          onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
-        >
-          -
-        </Button>
-        <Box flex={1}>
+        <Flex flex={1} backgroundColor="tomato" justifyContent="center">
+          <Button
+            variant="answer"
+            onClick={() => dispatch(["DECREASE_QUESTION_COUNT"])}
+          >
+            -
+          </Button>
           <Ring
             count={questionCount}
             total={MAX_QUESTION_COUNT}
             stroke={2}
             radius={120}
           />
-        </Box>
+          <Button
+            variant="answer"
+            onClick={() => dispatch(["INCREASE_QUESTION_COUNT"])}
+          >
+            +
+          </Button>
+        </Flex>
+      </Flex>
+      <Flex alignItems="center">
         <Button
           variant="answer"
-          onClick={() => dispatch(["INCREASE_DIFFICULTY"])}
+          onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
         >
-          +
+          &lt;
         </Button>
-      </Flex>
-      <Box>
         <Text>
           <strong>Difficulty:</strong>
           {difficulty}
         </Text>
-        <Text>
-          <strong>Question Count:</strong>
-          {questionCount}
-        </Text>
-      </Box>
+        <Button
+          variant="answer"
+          onClick={() => dispatch(["INCREASE_DIFFICULTY"])}
+        >
+          &gt;
+        </Button>
+      </Flex>
     </Flex>
   );
 };
@@ -76,8 +84,8 @@ const Ring: React.FC<RingProps> = ({ count, total, radius, stroke = 2 }) => {
         stroke-width={stroke}
         fill="transparent"
         r={normalizedRadius}
-        cx={radius}
-        cy={radius}
+        cx="50%"
+        cy="50%"
       />
     </svg>
   );

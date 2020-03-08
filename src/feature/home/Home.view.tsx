@@ -31,15 +31,6 @@ export const Home: React.FC = () => {
         questions.
       </Text>
       <Flex flexDirection="column" flex={1}>
-        <input
-          type="number"
-          value={questionCount}
-          min={MIN_QUESTION_COUNT}
-          max={MAX_QUESTION_COUNT}
-          onChange={({ currentTarget }) =>
-            dispatch(["UPDATE_QUESTION_COUNT", +currentTarget.value])
-          }
-        />
         <QuestionSettings />
       </Flex>
       <Link to="/quiz">

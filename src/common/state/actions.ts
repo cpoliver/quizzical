@@ -6,7 +6,8 @@ type AnswerQuestionAction = ["ANSWER_QUESTION", Answer];
 
 type IncreaseDifficultyAction = ["INCREASE_DIFFICULTY"];
 type DecreaseDifficultyAction = ["DECREASE_DIFFICULTY"];
-type UpdateQuestionCountAction = ["UPDATE_QUESTION_COUNT", number];
+type IncreaseQuestionCountAction = ["INCREASE_QUESTION_COUNT"];
+type DecreaseQuestionCountAction = ["DECREASE_QUESTION_COUNT"];
 
 type UpdateSettingsAction = ["UPDATE_SETTINGS", Partial<AppSettingsState>];
 
@@ -19,7 +20,8 @@ export type Action =
   | AnswerQuestionAction
   | IncreaseDifficultyAction
   | DecreaseDifficultyAction
-  | UpdateQuestionCountAction
+  | IncreaseQuestionCountAction
+  | DecreaseQuestionCountAction
   | FetchQuestionsAction
   | FetchQuestionsSuccessAction
   | FetchQuestionsErrorAction

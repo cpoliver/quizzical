@@ -7,7 +7,7 @@ import {
   AppSettingsState,
   difficultyToNumber,
 } from "./Store";
-import { Answer } from "../constants";
+import { Answer, MAX_QUESTION_COUNT, MIN_QUESTION_COUNT } from "../constants";
 import { questions } from "../../feature/quiz/quizData";
 
 const state: { [key: string]: StoreState } = {
@@ -82,18 +82,39 @@ describe("decrease difficulty", () => {
   });
 });
 
-describe("update question count", () => {
-  it("should update the question count", () => {
-    const questionCount = 42;
-    const actual = reducer(state.init, [
-      "UPDATE_QUESTION_COUNT",
-      questionCount,
-    ]);
+describe("increase question count", () => {
+  it("should increase the question count, when not at the maximum", () => {
+    const actual = reducer(state.init, ["INCREASE_QUESTION_COUNT"]);
 
     expect(actual).toEqual({
       ...state.init,
-      questionCount,
+      questionCount: 15,
     });
+  });
+
+  it("should do nothing to the question count, when at the maximum", () => {
+    const maxQs = { ...state.init, questionCount: MAX_QUESTION_COUNT };
+    const actual = reducer(maxQs, ["INCREASE_QUESTION_COUNT"]);
+
+    expect(actual).toEqual(maxQs);
+  });
+});
+
+describe("decrease question count", () => {
+  it("should decrease the question count, when not at the minimum", () => {
+    const actual = reducer(state.init, ["DECREASE_QUESTION_COUNT"]);
+
+    expect(actual).toEqual({
+      ...state.init,
+      questionCount: 5,
+    });
+  });
+
+  it("should do nothing to the question count, when at the minimum", () => {
+    const minQs = { ...state.init, questionCount: MIN_QUESTION_COUNT };
+    const actual = reducer(minQs, ["DECREASE_QUESTION_COUNT"]);
+
+    expect(actual).toEqual(minQs);
   });
 });
 

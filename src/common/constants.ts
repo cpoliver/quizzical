@@ -23,5 +23,6 @@ export type QuestionResult = Question & {
   given_answer: Answer;
 };
 
-export const MAX_QUESTION_COUNT = 100;
-export const MIN_QUESTION_COUNT = 5;
+export const QUESTION_COUNT_INCREMENT = 5;
+export const MAX_QUESTION_COUNT = QUESTION_COUNT_INCREMENT * 10;
+export const MIN_QUESTION_COUNT = QUESTION_COUNT_INCREMENT;
