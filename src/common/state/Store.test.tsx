@@ -8,7 +8,7 @@ import {
   difficultyToNumber,
 } from "./Store";
 import { Answer, MAX_QUESTION_COUNT, MIN_QUESTION_COUNT } from "../constants";
-import { questions } from "../../feature/quiz/quizData";
+import { questions } from "../../features/quiz/quizData";
 
 const state: { [key: string]: StoreState } = {
   init: initState,

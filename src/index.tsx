@@ -8,9 +8,9 @@ import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./common/state/Store";
 import { theme } from "./common/theme";
 
-import { Home } from "./feature/home/Home.view";
-import { Quiz } from "./feature/quiz/Quiz.view";
-import { Settings } from "./feature/settings/Settings.view";
+import { Home } from "./features/home/Home.view";
+import { Quiz } from "./features/quiz/Quiz.view";
+import { Settings } from "./features/settings/Settings.view";
 
 const Shell: React.FC = ({ children }) => (
   <Flex
