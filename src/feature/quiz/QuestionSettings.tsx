@@ -116,8 +116,8 @@ const Ring: React.FC<RingProps> = ({ count, total, radius, stroke = 4 }) => {
     >
       <circle
         stroke="#92bbf8"
-        stroke-dasharray={`${circumference} ${circumference}`}
-        stroke-width={stroke}
+        strokeDasharray={`${circumference} ${circumference}`}
+        strokeWidth={stroke}
         fill="transparent"
         r={normalizedRadius}
         cx="50%"
@@ -125,11 +125,11 @@ const Ring: React.FC<RingProps> = ({ count, total, radius, stroke = 4 }) => {
       />
       <circle
         stroke="#f8f8f8"
-        stroke-dasharray={`${circumference} ${circumference}`}
+        strokeDasharray={`${circumference} ${circumference}`}
         style={{
           strokeDashoffset: offset,
         }}
-        stroke-width={stroke}
+        strokeWidth={stroke}
         fill="transparent"
         r={normalizedRadius}
         cx="50%"
