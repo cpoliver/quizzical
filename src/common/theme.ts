@@ -27,6 +27,7 @@ const variants = {
     alignItems: "center",
     flex: 1,
     flexDirection: "column",
+    maxHeight: "100vh",
   },
   header: {
     alignSelf: "stretch",

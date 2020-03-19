@@ -35,7 +35,12 @@ export const Results: React.FC = () => {
           </>
         </Progress>
       </Box>
-      <Flex variant="content" flexDirection="column" overflow="scrollY">
+      <Flex
+        variant="content"
+        flexDirection="column"
+        overflowY="scroll"
+        pt={150}
+      >
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
         ))}
@@ -55,18 +60,22 @@ const Result: React.FC<QuestionResult> = ({
   given_answer,
   correct_answer,
 }) => (
-  <Flex>
-    <Box width={32}>{is_correct ? <Tick /> : <Cross />}</Box>
+  <Flex p={2} m={2}>
+    <Box p={2} mr={2} backgroundColor="tomato">
+      {is_correct ? "Y" : "N"}
+      <Tick />
+    </Box>
     <Flex flexDirection="column">
       <Box>
-        <Html html={question} />
+        <Text fontFamily="body" color="primary">
+          <Html html={question} />
+        </Text>
       </Box>
       <Box>
-        {is_correct ? (
-          <Text>Your Answer: {given_answer}</Text>
-        ) : (
-          <Text>Correct Answer: {correct_answer}</Text>
-        )}
+        <Text fontFamily="body" color="primary">
+          {is_correct ? "Your" : "Correct"} Answer:{" "}
+          {is_correct ? given_answer : correct_answer}
+        </Text>
       </Box>
     </Flex>
   </Flex>

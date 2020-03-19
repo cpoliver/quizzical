@@ -11,7 +11,7 @@ export const Progress: React.FC<ProgressProps> = ({
   current,
   total,
 }) => (
-  <Flex flexDirection="column">
+  <Flex flexDirection="column" px={2}>
     <Flex sx={{ backgroundColor: "faded", height: 4, width: "100%" }}>
       <Box
         sx={{
@@ -27,7 +27,7 @@ export const Progress: React.FC<ProgressProps> = ({
         fontFamily="body"
         fontSize={0}
         fontWeight="semi"
-        mt={1}
+        mt={2}
         textAlign="right"
         color="primary"
       >
