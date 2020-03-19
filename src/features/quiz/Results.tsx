@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { toResults } from "./quizUtils";
+import { Tick, Cross } from "../../common/components/Result";
 import { Html } from "../../common/components/Html";
 import { Progress } from "../../common/components/Progress";
 import { QuestionResult } from "../../common/constants";
@@ -20,24 +20,31 @@ export const Results: React.FC = () => {
   const total = questions.length;
 
   return (
-    <Flex flexDirection="column" flex={1}>
-      <Heading fontSize={3} textAlign="center" mb={2}>
-        {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}
-      </Heading>
-      <Progress
-        current={score}
-        total={total}
-        label={`You answered ${score} / ${total} questions correctly`}
-      />
-      <Flex flexDirection="column" overflow="scrollY">
+    <Flex variant="wrapper">
+      <Box variant="header">
+        <Heading fontSize={3} textAlign="center" mb={2} color="primary">
+          {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}!
+        </Heading>
+        <Progress current={score} total={total}>
+          <>
+            YOU ANSWERED{" "}
+            <strong>
+              {score}/{total}
+            </strong>{" "}
+            QUESTIONS CORRECTLY
+          </>
+        </Progress>
+      </Box>
+      <Flex variant="content" flexDirection="column" overflow="scrollY">
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
         ))}
       </Flex>
-      <Button variant="default" onClick={() => dispatch(["RESET_QUIZ_STATE"])}>
-        Play Again?
-      </Button>
-      <Link to="/">Main Menu</Link>
+      <Box variant="footer">
+        <Button onClick={() => dispatch(["RESET_QUIZ_STATE"])} p={5}>
+          Play Again?
+        </Button>
+      </Box>
     </Flex>
   );
 };
@@ -49,7 +56,7 @@ const Result: React.FC<QuestionResult> = ({
   correct_answer,
 }) => (
   <Flex>
-    <Box>{is_correct ? "✔️" : "❌"}</Box>
+    <Box width={32}>{is_correct ? <Tick /> : <Cross />}</Box>
     <Flex flexDirection="column">
       <Box>
         <Html html={question} />

@@ -22,7 +22,7 @@ export const Question: React.FC = () => {
         <Progress
           current={current}
           total={total}
-          label={`${current}/${total}`}
+          children={`${current}/${total}`}
         />
       </Box>
       <Box variant="content">
@@ -34,13 +34,13 @@ export const Question: React.FC = () => {
       </Box>
       <Flex variant="footer" justifyContent="space-between">
         <Button
-          backgroundColor="transparent"
+          variant="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
         >
           <TrueButton />
         </Button>
         <Button
-          backgroundColor="transparent"
+          variant="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
         >
           <FalseButton />

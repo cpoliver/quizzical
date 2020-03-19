@@ -3,6 +3,7 @@ import {
   always,
   propOr,
   evolve,
+  repeat,
   append,
   merge as unflippedMerge,
   flip,
@@ -21,6 +22,7 @@ import {
   QUESTION_COUNT_INCREMENT,
   MIN_QUESTION_COUNT,
 } from "../constants";
+import { questions as mockQuestions } from "../../features/quiz/quizData";
 
 type QuizState = {
   error: string | null;
@@ -30,12 +32,16 @@ type QuizState = {
   currentQuestion: number;
 };
 
+// hack to show static results whilst styling
+const useMocks = !true;
+const questionCount = QUESTION_COUNT_INCREMENT * 2;
+
 const initQuizState: QuizState = {
   error: null,
   isLoading: false,
-  answers: [],
-  questions: [],
-  currentQuestion: 0,
+  answers: useMocks ? repeat("False", questionCount) : [],
+  questions: useMocks ? mockQuestions : [],
+  currentQuestion: useMocks ? mockQuestions.length : 0,
 };
 
 type QuizSettingsState = {
@@ -45,7 +51,7 @@ type QuizSettingsState = {
 
 const initQuizSettingsState: QuizSettingsState = {
   difficulty: "medium",
-  questionCount: QUESTION_COUNT_INCREMENT * 2,
+  questionCount,
 };
 
 export type AppSettingsState = {

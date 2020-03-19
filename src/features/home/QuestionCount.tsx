@@ -15,13 +15,9 @@ export const QuestionCount = () => {
   return (
     <Flex justifyContent="center" alignItems="center" my={2}>
       <Button
+        variant="questionCount"
         onClick={() => dispatch(["DECREASE_QUESTION_COUNT"])}
-        sx={{
-          position: "relative",
-          backgroundColor: "background",
-          right: -offset,
-          zIndex: 1,
-        }}
+        sx={{ right: -offset }}
       >
         <Text fontWeight="bold" fontSize={3}>
           -
@@ -50,12 +46,8 @@ export const QuestionCount = () => {
       </Box>
       <Button
         onClick={() => dispatch(["INCREASE_QUESTION_COUNT"])}
-        sx={{
-          position: "relative",
-          backgroundColor: "background",
-          left: -offset,
-          zIndex: 1,
-        }}
+        variant="questionCount"
+        sx={{ left: -offset }}
       >
         <Text fontWeight="bold" fontSize={3}>
           +

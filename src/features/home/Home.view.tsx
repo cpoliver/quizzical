@@ -42,9 +42,7 @@ export const Home: React.FC = () => {
           {difficulty} True or False questions
         </Text>
         <Link to="/quiz">
-          <Button variant="default" width="100%" p={5}>
-            PLAY!
-          </Button>
+          <Button p={5}>PLAY!</Button>
         </Link>
       </Box>
     </Flex>

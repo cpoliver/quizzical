@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Tick, Cross } from "../../common/components/Result";
 import { colors } from "../../common/theme";
 
 const AnswerButton: React.FC = ({ children }) => (
@@ -54,33 +55,12 @@ const AnswerButton: React.FC = ({ children }) => (
 
 export const TrueButton = () => (
   <AnswerButton>
-    <path
-      d="M60.2849 27.0451L34.6712 52.9548L23.7151 42.0523"
-      stroke={colors.primary}
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <Tick />
   </AnswerButton>
 );
 
 export const FalseButton = () => (
   <AnswerButton>
-    <>
-      <path
-        d="M26.2461 24.4783L57.7537 55.5214"
-        stroke={colors.primary}
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M26.2461 55.5215L57.7537 24.4783"
-        stroke={colors.primary}
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </>
+    <Cross />
   </AnswerButton>
 );

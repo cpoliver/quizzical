@@ -53,14 +53,20 @@ const variants = {
     textAlign: "center",
   },
   buttons: {
-    default: {
+    primary: {
       backgroundColor: "primary",
+      borderRadius: 9001,
       boxShadow: "default",
       color: "background",
-      borderRadius: 9001,
-      fontSize: 3,
       fontFamily: "body",
+      fontSize: 3,
       fontWeight: "semi",
+      width: "100%",
+    },
+    questionCount: {
+      position: "relative",
+      backgroundColor: "background",
+      zIndex: 1,
     },
     transparent: {
       backgroundColor: "transparent",
