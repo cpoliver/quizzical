@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
+
+import { colors } from "../../common/theme";
 
 const AnswerButton: React.FC = ({ children }) => (
   <svg
@@ -9,7 +11,7 @@ const AnswerButton: React.FC = ({ children }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g filter="url(#filter0_d)">
-      <circle cx="42" cy="40" r="38" stroke="#F8F8F8" strokeWidth="4" />
+      <circle cx="42" cy="40" r="38" stroke={colors.primary} strokeWidth="4" />
     </g>
     {children}
     <defs>
@@ -54,7 +56,7 @@ export const TrueButton = () => (
   <AnswerButton>
     <path
       d="M60.2849 27.0451L34.6712 52.9548L23.7151 42.0523"
-      stroke="#F8F8F8"
+      stroke={colors.primary}
       strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -67,14 +69,14 @@ export const FalseButton = () => (
     <>
       <path
         d="M26.2461 24.4783L57.7537 55.5214"
-        stroke="#F8F8F8"
+        stroke={colors.primary}
         strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M26.2461 55.5215L57.7537 24.4783"
-        stroke="#F8F8F8"
+        stroke={colors.primary}
         strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Flex, Button, Box, Text, Heading, BoxProps } from "rebass";
 
+import { DifficultySelector } from "./DifficultySelector";
+import { QuestionCount } from "./QuestionCount";
 import { store } from "../../common/state/Store";
-import { QuestionSettings } from "../quiz/QuestionSettings";
 
 export const Home: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -14,35 +15,34 @@ export const Home: React.FC = () => {
 
   return (
     <Flex variant="wrapper">
-      <Box variant="header">
-        <Heading
-          color="white"
-          fontSize={5}
-          fontWeight="bold"
-          textAlign="center"
-          mb={-2}
-        >
-          LET'S GET
-        </Heading>
-        <Heading
-          color="white"
-          fontSize={6}
-          fontWeight="bold"
-          textAlign="center"
-        >
+      <Box variant="header" mt={5}>
+        <Heading variant="appName">LET'S GET</Heading>
+        <Heading variant="appName" fontSize={6}>
           QUiZZ!CAL
         </Heading>
       </Box>
       <Flex variant="content">
-        <Text fontFamily="body" my={3} textAlign="center">
-          You will be presented with {questionCount} {difficulty} True or False
-          questions.
+        <Text color="primary" fontFamily="body" fontWeight="bold">
+          QUESTION SETTINGS
         </Text>
-        <QuestionSettings />
+        <QuestionCount />
+        <DifficultySelector />
       </Flex>
       <Box variant="footer">
+        <Text
+          fontFamily="body"
+          fontSize={3}
+          mx={4}
+          mb={6}
+          textAlign="center"
+          color="primary"
+        >
+          You will be presented with {questionCount}
+          <br />
+          {difficulty} True or False questions
+        </Text>
         <Link to="/quiz">
-          <Button variant="default" width="100%" p={4}>
+          <Button variant="default" width="100%" p={5}>
             PLAY!
           </Button>
         </Link>

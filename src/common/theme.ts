@@ -1,3 +1,5 @@
+import { Colors } from "react-native/Libraries/NewAppScreen";
+
 // Theme UI spec: https://theme-ui.com/customize
 
 const DEFAULT_FONTS =
@@ -28,8 +30,8 @@ const variants = {
   },
   header: {
     alignSelf: "stretch",
-    backgroundColor: "rgba(0,0,0,0.25)",
-    p: 3,
+    px: 4,
+    py: 5,
   },
   content: {
     alignItems: "center",
@@ -40,39 +42,49 @@ const variants = {
   },
   footer: {
     alignSelf: "stretch",
-    backgroundColor: "rgba(0,0,0,0.25)",
-    p: 3,
+    p: 6,
+  },
+  appName: {
+    textShadow: "default",
+    color: "primary",
+    fontSize: 5,
+    fontWeight: "bold",
+    mb: -2,
+    textAlign: "center",
   },
   buttons: {
     default: {
       backgroundColor: "primary",
+      boxShadow: "default",
       color: "background",
       borderRadius: 9001,
       fontSize: 3,
       fontFamily: "body",
       fontWeight: "semi",
     },
-    answer: {
+    transparent: {
       backgroundColor: "transparent",
     },
   },
 };
 
+export const colors = {
+  primary: "#f3f9ff",
+  background: "#2c7ef8",
+  secondary: "#3b4660",
+  faded: "#92bbf8",
+  grey: "#54565a",
+  correct: "#0e8729",
+  incorrect: "#bf0000",
+};
+
 export const theme = {
   breakpoints: ["40em", "52em", "64em"],
   space: [0, 4, 8, 12, 16, 24, 32, 48, 64],
-
-  colors: {
-    primary: "#f3f9ff",
-    background: "#2c7ef8",
-    secondary: "#3b4660",
-    faded: "#92bbf8",
-    backgroundSecondary: "#f3f9ff",
-    grey: "#54565a",
-    correct: "#0e8729",
-    incorrect: "#bf0000",
+  colors,
+  shadows: {
+    default: "0px 1px 1px rgba(0,0,0, 0.2)",
   },
-
   ...typography,
   ...variants,
 };

@@ -31,6 +31,7 @@ export const Progress: React.FC<ProgressProps> = ({
           fontWeight="semi"
           mt={1}
           textAlign="right"
+          color="primary"
         >
           {label}
         </Text>
