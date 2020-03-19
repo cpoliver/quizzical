@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Flex } from "rebass";
 import { ThemeProvider } from "theme-ui";
 
 import * as serviceWorker from "./serviceWorker";
@@ -12,47 +11,20 @@ import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
 import { Settings } from "./features/settings/Settings.view";
 
-const Shell: React.FC = ({ children }) => (
-  <Flex
-    sx={{
-      alignItems: "center",
-      color: "primary",
-      flex: 1,
-      height: "100vh",
-      justifyContent: "center",
-    }}
-  >
-    <Flex
-      sx={{
-        backgroundColor: "rgba(0,0,0,0.2)",
-        flex: 1,
-        maxWidth: 400,
-        minHeight: 480,
-        minWidth: 320,
-        padding: 5,
-      }}
-    >
-      {children}
-    </Flex>
-  </Flex>
-);
-
 const App: React.FC = () => (
-  <Shell>
-    <Router>
-      <Switch>
-        <Route path="/quiz">
-          <Quiz />
-        </Route>
-        <Route path="/settings">
-          <Settings />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  </Shell>
+  <Router>
+    <Switch>
+      <Route path="/quiz">
+        <Quiz />
+      </Route>
+      <Route path="/settings">
+        <Settings />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </Router>
 );
 
 ReactDOM.render(

@@ -33,6 +33,21 @@ export const theme = {
     bold: 700,
   },
 
+  header: {
+    backgroundColor: "rgba(0,0,0,0.25)",
+    p: 3,
+  },
+  content: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    flex: 1,
+  },
+  footer: {
+    backgroundColor: "rgba(0,0,0,0.25)",
+    p: 3,
+  },
+
   buttons: {
     default: {
       backgroundColor: "primary",
