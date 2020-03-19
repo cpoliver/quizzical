@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Flex } from "rebass";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "theme-ui";
 
@@ -11,28 +12,31 @@ import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
 import { Settings } from "./features/settings/Settings.view";
 
-const App: React.FC = () => (
-  <Router>
-    <Switch>
-      <Route path="/quiz">
-        <Quiz />
-      </Route>
-      <Route path="/settings">
-        <Settings />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
-    </Switch>
-  </Router>
-);
-
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <StoreProvider>
-      <App />
-    </StoreProvider>
-  </ThemeProvider>,
+  <Flex
+    backgroundColor="rgba(0,0,0,0.25)"
+    margin="0 auto"
+    flex="1"
+    maxWidth="52em"
+  >
+    <ThemeProvider theme={theme}>
+      <StoreProvider>
+        <Router>
+          <Switch>
+            <Route path="/quiz">
+              <Quiz />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </StoreProvider>
+    </ThemeProvider>
+  </Flex>,
   document.getElementById("root"),
 );
 

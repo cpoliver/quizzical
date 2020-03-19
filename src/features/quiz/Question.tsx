@@ -4,6 +4,7 @@ import { Flex, Button, Box, Text, Heading } from "rebass";
 import { store } from "../../common/state/Store";
 import { Html } from "../../common/components/Html";
 import { Progress } from "../../common/components/Progress";
+import { FalseButton, TrueButton } from "./AnswerButton";
 
 export const Question: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -23,18 +24,18 @@ export const Question: React.FC = () => {
           <Html html={question} />
         </Text>
       </Flex>
-      <Flex>
+      <Flex alignItems="flex-end">
         <Button
-          variant="answer"
+          backgroundColor="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
         >
-          ✓
+          <TrueButton />
         </Button>
         <Button
-          variant="answer"
+          backgroundColor="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
         >
-          ✘
+          <FalseButton />
         </Button>
       </Flex>
     </Flex>

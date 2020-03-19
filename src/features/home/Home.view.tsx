@@ -13,12 +13,23 @@ export const Home: React.FC = () => {
   const { questionCount, difficulty } = state;
 
   return (
-    <Flex flexDirection="column" flex={1}>
+    <Flex variant="wrapper">
       <Box variant="header">
-        <Heading fontSize={5} fontWeight="bold" textAlign="center" mb={-2}>
+        <Heading
+          color="white"
+          fontSize={5}
+          fontWeight="bold"
+          textAlign="center"
+          mb={-2}
+        >
           LET'S GET
         </Heading>
-        <Heading fontSize={6} fontWeight="bold" textAlign="center">
+        <Heading
+          color="white"
+          fontSize={6}
+          fontWeight="bold"
+          textAlign="center"
+        >
           QUiZZ!CAL
         </Heading>
       </Box>
