@@ -71,6 +71,8 @@ const variants = {
     },
     transparent: {
       backgroundColor: "transparent",
+      m: 0,
+      p: 0,
     },
   },
 };

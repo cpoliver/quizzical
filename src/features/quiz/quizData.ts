@@ -14,8 +14,9 @@ export const questions: Question[] = [
     category: "Entertainment: Video Games",
     type: "boolean",
     difficulty: "hard",
-    question:
-      "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
+    question: "short AF",
+    // question:
+    //   "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },

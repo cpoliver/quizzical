@@ -23,7 +23,7 @@ export const Progress: React.FC<ProgressProps> = ({
     </Flex>
     {children && (
       <Text
-        alignSelf="flex-end"
+        alignSelf="center"
         fontFamily="body"
         fontSize={0}
         fontWeight="semi"

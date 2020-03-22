@@ -39,7 +39,7 @@ export const Results: React.FC = () => {
         variant="content"
         flexDirection="column"
         overflowY="scroll"
-        pt={150}
+        // pt={150}
       >
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
@@ -60,20 +60,27 @@ const Result: React.FC<QuestionResult> = ({
   given_answer,
   correct_answer,
 }) => (
-  <Flex p={2} m={2}>
+  <Flex p={2} m={2} width="100%">
     <Box width={32} mr={3} alignSelf="center">
       {is_correct ? <TrueButton /> : <FalseButton />}
     </Box>
-    <Flex flex={1} flexDirection="column">
-      <Box>
+    <Flex flex={1} flexDirection="column" justifyContent="space-between">
+      <Box flex={1}>
         <Text fontFamily="body" color="primary">
           <Html html={question} />
         </Text>
       </Box>
-      <Box>
-        <Text fontFamily="body" color="primary">
+      <Box mt={1}>
+        <Text
+          sx={{
+            color: "primary",
+            fontFamily: "body",
+            fontSize: 0,
+            textTransform: "uppercase",
+          }}
+        >
           {is_correct ? "Your" : "Correct"} Answer:{" "}
-          {is_correct ? given_answer : correct_answer}
+          <strong>{is_correct ? given_answer : correct_answer}</strong>
         </Text>
       </Box>
     </Flex>
