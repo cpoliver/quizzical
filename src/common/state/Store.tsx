@@ -33,7 +33,7 @@ type QuizState = {
 };
 
 // hack to show static results whilst styling
-const useMocks = true;
+const useMocks = !true;
 const questionCount = QUESTION_COUNT_INCREMENT * 2;
 
 const initQuizState: QuizState = {

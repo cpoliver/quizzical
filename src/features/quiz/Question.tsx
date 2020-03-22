@@ -37,13 +37,17 @@ export const Question: React.FC = () => {
           variant="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
         >
-          <TrueButton />
+          <Box width={80}>
+            <TrueButton />
+          </Box>
         </Button>
         <Button
           variant="transparent"
           onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
         >
-          <FalseButton />
+          <Box width={80}>
+            <FalseButton />
+          </Box>
         </Button>
       </Flex>
     </Flex>
