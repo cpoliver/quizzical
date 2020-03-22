@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { toResults } from "./quizUtils";
-import { Tick, Cross } from "../../common/components/Result";
+// import { Tick, Cross } from "../../common/components/Result";
+import { TrueButton as Tick, FalseButton as Cross } from "./AnswerButton";
 import { Html } from "../../common/components/Html";
 import { Progress } from "../../common/components/Progress";
 import { QuestionResult } from "../../common/constants";
@@ -61,11 +62,10 @@ const Result: React.FC<QuestionResult> = ({
   correct_answer,
 }) => (
   <Flex p={2} m={2}>
-    <Box p={2} mr={2} backgroundColor="tomato">
-      {is_correct ? "Y" : "N"}
-      <Tick />
+    <Box width={32} mr={3} alignSelf="center">
+      {is_correct ? <Tick /> : <Cross />}
     </Box>
-    <Flex flexDirection="column">
+    <Flex flex={1} flexDirection="column">
       <Box>
         <Text fontFamily="body" color="primary">
           <Html html={question} />
