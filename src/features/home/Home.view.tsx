@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/* <Spinner /> */}
+      <Spinner />
       <Flex variant="wrapper">
         <Box variant="header" mt={5}>
           <Heading variant="appName">LET'S GET</Heading>
