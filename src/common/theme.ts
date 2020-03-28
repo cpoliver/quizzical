@@ -92,7 +92,7 @@ export const theme = {
   space: [0, 4, 8, 12, 16, 24, 32, 48, 64],
   colors,
   shadows: {
-    default: "0px 1px 1px rgba(0,0,0, 0.2)",
+    default: "0px 1px 1px rgba(0,0,0,0.2)",
   },
   ...typography,
   ...variants,

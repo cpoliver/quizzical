@@ -4,6 +4,7 @@ import { Flex, Box, Text, Heading } from "rebass";
 import { Question } from "./Question";
 import { Results } from "./Results";
 import { store } from "../../common/state/Store";
+import { Spinner } from "../../common/components/Spinner";
 
 export const Quiz: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -21,9 +22,7 @@ export const Quiz: React.FC = () => {
     if (!questions.length) loadQuestions();
   });
 
-  if (!questions.length) {
-    return <Flex flex={1}>loading...</Flex>;
-  }
+  if (!questions.length) return <Spinner />;
 
   return (
     <Flex flex={1}>
