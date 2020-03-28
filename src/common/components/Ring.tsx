@@ -3,12 +3,16 @@ import React from "react";
 import { colors } from "../theme";
 
 type RingProps = {
-  count: number;
-  total: number;
+  count?: number;
+  total?: number;
   thickness?: number;
 };
 
-export const Ring: React.FC<RingProps> = ({ count, total, thickness = 4 }) => {
+export const Ring: React.FC<RingProps> = ({
+  count = 10,
+  total = 10,
+  thickness = 4,
+}) => {
   const percent = count / total;
 
   const size = 100;

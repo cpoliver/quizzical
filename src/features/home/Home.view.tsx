@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <Spinner />
+      {/* <Spinner /> */}
       <Flex variant="wrapper">
         <Box variant="header" mt={5}>
           <Heading variant="appName">LET'S GET</Heading>
@@ -24,32 +24,28 @@ export const Home: React.FC = () => {
             QUiZZ!CAL
           </Heading>
         </Box>
-        <Flex variant="content" backgroundColor="red">
-          {/* <Box flex={1} /> */}
-          <Flex flex={1} alignItems="flex-end">
+        <Flex variant="content">
+          <Box flex={1} />
+          <Flex alignItems="center" flexDirection="column">
             <Text color="primary" fontFamily="body" fontWeight="bold">
               QUESTION SETTINGS
             </Text>
-          </Flex>
-          <Box flex={1} backgroundColor="tomato">
             <QuestionCount />
-          </Box>
-          <Flex flex={1} alignItems="center" flexDirection="column">
             <DifficultySelector />
-            <Box flex={1} backgroundColor="tomato">
-              <Text
-                fontFamily="body"
-                fontSize={3}
-                mx={4}
-                mb={6}
-                textAlign="center"
-                color="primary"
-              >
-                You will be presented with {questionCount}
-                <br />
-                {difficulty} True or False questions
-              </Text>
-            </Box>
+          </Flex>
+          <Flex flex={1} flexDirection="column-reverse">
+            <Text
+              fontFamily="body"
+              fontSize={3}
+              mx={4}
+              mb={6}
+              textAlign="center"
+              color="primary"
+            >
+              You will be presented with {questionCount}
+              <br />
+              {difficulty} True or False questions
+            </Text>
           </Flex>
         </Flex>
         <Box variant="footer">
