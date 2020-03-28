@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Flex, Button, Box, Text } from "rebass";
 
 import { store } from "../../common/state/Store";
+import { Ring } from "../../common/components/Ring";
 import { MAX_QUESTION_COUNT } from "../../common/constants";
-import { colors } from "../../common/theme";
 
 export const QuestionCount = () => {
   const { state, dispatch } = useContext(store);
@@ -54,50 +54,5 @@ export const QuestionCount = () => {
         </Text>
       </Button>
     </Flex>
-  );
-};
-
-type RingProps = {
-  count: number;
-  total: number;
-  thickness?: number;
-};
-
-const Ring: React.FC<RingProps> = ({ count, total, thickness = 4 }) => {
-  const percent = count / total;
-
-  const size = 100;
-  const radius = size / 2;
-  const normalizedRadius = radius - thickness * 2;
-  const circumference = normalizedRadius * 2 * Math.PI;
-  const offset = circumference - percent * circumference;
-
-  return (
-    <svg
-      viewBox={`0 0 ${size} ${size}`}
-      style={{ transform: "rotate(-180deg)" }}
-    >
-      <circle
-        stroke={colors.faded}
-        strokeDasharray={`${circumference} ${circumference}`}
-        strokeWidth={thickness}
-        fill="transparent"
-        r={normalizedRadius}
-        cx="50%"
-        cy="50%"
-      />
-      <circle
-        stroke={colors.primary}
-        strokeDasharray={`${circumference} ${circumference}`}
-        style={{
-          strokeDashoffset: offset,
-        }}
-        strokeWidth={thickness}
-        fill="transparent"
-        r={normalizedRadius}
-        cx="50%"
-        cy="50%"
-      />
-    </svg>
   );
 };
