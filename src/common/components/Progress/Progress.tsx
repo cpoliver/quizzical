@@ -22,18 +22,16 @@ export const Progress: React.FC<ProgressProps> = ({
         width={current / total}
       ></Box>
     </Flex>
-    {children && (
-      <Text
-        alignSelf="center"
-        fontFamily="body"
-        fontSize={0}
-        fontWeight="semi"
-        mt={2}
-        textAlign="right"
-        color="primary"
-      >
-        {children}
-      </Text>
-    )}
+    <Text
+      alignSelf="center"
+      fontFamily="body"
+      fontSize={0}
+      fontWeight="semi"
+      mt={2}
+      textAlign="right"
+      color="primary"
+    >
+      {children}
+    </Text>
   </Flex>
 );
