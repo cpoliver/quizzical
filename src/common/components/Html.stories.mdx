@@ -1,0 +1,25 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import { Html, HtmlProps } from "./Html";
+
+<Meta title="Test" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="button">
+    <Html
+      html={`
+  <pre><strong>This</strong> is <em>some</em></pre>
+  <h2>HTML</h2>
+  <p><small>Pretty neat, huh?</small></p>
+`}
+    />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Html} />
