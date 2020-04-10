@@ -14,7 +14,7 @@ export const Ring: React.FC<RingProps> = ({
   total = 10,
   thickness = 4,
   spinner = false,
-}) => {
+}: RingProps) => {
   const percent = count / total;
 
   const size = 100;

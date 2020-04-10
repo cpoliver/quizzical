@@ -1,0 +1,52 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { Box } from "rebass";
+
+import { Ring } from "./Ring";
+
+<Meta title="Ring" />
+
+# Preview
+
+<Preview>
+  <Story name="Empty">
+    <Box height={300} width={300}>
+      <Ring count={0} total={100} />
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Partial">
+    <Box height={300} width={300}>
+      <Ring count={42} total={100} />
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Full">
+    <Box height={300} width={300}>
+      <Ring count={100} total={100} />
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Spinner">
+    <Box height={300} width={300}>
+      <Ring spinner />
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Custom Thickness">
+    <Box height={300} width={300}>
+      <Ring count={5} thickness={1} />
+    </Box>
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Ring} />
