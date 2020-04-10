@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Box } from "rebass";
 import { keyframes } from "@emotion/core";
 
-import { Ring } from "../components/Ring";
+import { Ring } from "../Ring/Ring";
 
 const ringSize = 140;
 

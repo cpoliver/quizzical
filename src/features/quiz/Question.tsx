@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { Flex, Button, Box, Text, Heading } from "rebass";
 
-import { store } from "../../common/state/Store";
-import { Html } from "../../common/components/Html";
-import { Progress } from "../../common/components/Progress";
 import { FalseButton, TrueButton } from "./AnswerButton";
+import { store } from "../../common/state/Store";
+import { Html, Progress } from "../../common/components/";
 
 export const Question: React.FC = () => {
   const { state, dispatch } = useContext(store);

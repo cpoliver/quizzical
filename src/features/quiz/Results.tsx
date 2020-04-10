@@ -3,8 +3,7 @@ import { Flex, Button, Box, Text, Heading } from "rebass";
 
 import { toResults } from "./quizUtils";
 import { TrueButton, FalseButton } from "./AnswerButton";
-import { Html } from "../../common/components/Html";
-import { Progress } from "../../common/components/Progress";
+import { Html, Progress } from "../../common/components/";
 import { QuestionResult } from "../../common/constants";
 import { store } from "../../common/state/Store";
 

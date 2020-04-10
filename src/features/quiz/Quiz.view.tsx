@@ -4,7 +4,7 @@ import { Flex, Box, Text, Heading } from "rebass";
 import { Question } from "./Question";
 import { Results } from "./Results";
 import { store } from "../../common/state/Store";
-import { Spinner } from "../../common/components/Spinner";
+import { Spinner } from "../../common/components";
 
 export const Quiz: React.FC = () => {
   const { state, dispatch } = useContext(store);

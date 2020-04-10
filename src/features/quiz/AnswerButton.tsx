@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Tick, Cross } from "../../common/components/Result";
+import { Tick, Cross } from "../../common/components";
 import { colors } from "../../common/theme";
 
 const AnswerButton: React.FC = ({ children }) => (
