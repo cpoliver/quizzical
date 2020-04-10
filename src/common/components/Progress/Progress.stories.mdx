@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
-import { Flex } from "rebass";
+import { Box, Flex } from "rebass";
 
 import { Progress } from "./Progress";
 
@@ -8,12 +8,32 @@ import { Progress } from "./Progress";
 # Preview
 
 <Preview>
-  <Story name="Progress">
-    <Flex p={2}>
+  <Story name="Empty">
+    <Box p={5} width={500}>
+      <Progress current={0} total={10}>
+        0% complete
+      </Progress>
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Partial">
+    <Box p={5} width={500}>
       <Progress current={3} total={10}>
         30% complete
       </Progress>
-    </Flex>
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Full">
+    <Box p={5} width={500}>
+      <Progress current={10} total={10}>
+        100% complete
+      </Progress>
+    </Box>
   </Story>
 </Preview>
 

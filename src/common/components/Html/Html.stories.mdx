@@ -1,4 +1,5 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { Box } from "rebass";
 
 import { Html } from "./Html";
 
@@ -8,19 +9,23 @@ import { Html } from "./Html";
 
 <Preview>
   <Story name="Html">
-    <Html
-      html={`
+    <Box p={5}>
+      <Html
+        html={`
   <pre><strong>This</strong> is <em>some</em></pre>
   <h2>HTML</h2>
   <p><small>Pretty neat, huh?</small></p>
 `}
-    />
+      />
+    </Box>
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Text">
-    <Html html="This is a string of regular text" />
+    <Box p={5}>
+      <Html html="This is a string of regular text" />
+    </Box>
   </Story>
 </Preview>
 
