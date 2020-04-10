@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Flex } from "rebass";
+import { Flex, SxProps } from "rebass";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "theme-ui";
+import { ThemeProvider, SxStyleProp } from "theme-ui";
 
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./common/state/Store";
@@ -12,30 +12,46 @@ import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
 import { Settings } from "./features/settings/Settings.view";
 
+const styles: { [key: string]: SxStyleProp } = {
+  inner: {
+    flex: "1",
+    height: "100%",
+    m: "0 auto",
+    maxHeight: "50em",
+    maxWidth: ["initial", "75%", "50%", "40%"],
+    minWidth: "20em",
+  },
+  outer: {
+    alignItems: "center",
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+    right: 0,
+    top: 0,
+  },
+};
+
 ReactDOM.render(
-  <Flex
-    m="0 auto"
-    flex="1"
-    minWidth="20em"
-    maxWidth={["initial", "75%", "50%", "40%"]}
-  >
-    <ThemeProvider theme={theme}>
-      <StoreProvider>
-        <Router>
-          <Switch>
-            <Route path="/quiz">
-              <Quiz />
-            </Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </Router>
-      </StoreProvider>
-    </ThemeProvider>
+  <Flex sx={styles.outer}>
+    <Flex sx={styles.inner}>
+      <ThemeProvider theme={theme}>
+        <StoreProvider>
+          <Router>
+            <Switch>
+              <Route path="/quiz">
+                <Quiz />
+              </Route>
+              <Route path="/settings">
+                <Settings />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </Router>
+        </StoreProvider>
+      </ThemeProvider>
+    </Flex>
   </Flex>,
   document.getElementById("root"),
 );
