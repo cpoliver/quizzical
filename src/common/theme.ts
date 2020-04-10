@@ -42,7 +42,8 @@ const variants = {
     p: 3,
   },
   footer: {
-    alignSelf: "stretch",
+    alignSelf: "center",
+    width: "90%",
     p: 6,
   },
   appName: {
@@ -88,7 +89,7 @@ export const colors = {
 };
 
 export const theme = {
-  breakpoints: ["40em", "52em", "64em"],
+  breakpoints: ["40em", "52em", "64em", "70em"],
   space: [0, 4, 8, 12, 16, 24, 32, 48, 64],
   colors,
   shadows: {

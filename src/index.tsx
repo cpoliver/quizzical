@@ -13,7 +13,12 @@ import { Quiz } from "./features/quiz/Quiz.view";
 import { Settings } from "./features/settings/Settings.view";
 
 ReactDOM.render(
-  <Flex m="0 auto" flex="1" maxWidth="52em">
+  <Flex
+    m="0 auto"
+    flex="1"
+    minWidth="20em"
+    maxWidth={["initial", "75%", "50%", "40%"]}
+  >
     <ThemeProvider theme={theme}>
       <StoreProvider>
         <Router>
