@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Tick, Cross } from "../../common/components";
-import { colors } from "../../common/theme";
+import { Tick, Cross } from "../../../common/components";
+import { colors } from "../../../common/theme";
 
 const AnswerButton: React.FC = ({ children }) => (
   <svg viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">

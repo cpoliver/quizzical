@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Flex, Button, Box, Text } from "rebass";
 
-import { store } from "../../common/state/Store";
-import { Ring } from "../../common/components";
-import { MAX_QUESTION_COUNT } from "../../common/constants";
+import { store } from "../../../common/state/Store";
+import { Ring } from "../../../common/components";
+import { MAX_QUESTION_COUNT } from "../../../common/constants";
 
 export const QuestionCount = () => {
   const { state, dispatch } = useContext(store);

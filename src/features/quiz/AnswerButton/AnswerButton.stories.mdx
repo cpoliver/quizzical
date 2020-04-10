@@ -1,0 +1,24 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { Box } from "rebass";
+
+import { TrueButton, FalseButton } from "./AnswerButton";
+
+<Meta title="Quiz | AnswerButton" />
+
+# Preview
+
+<Preview>
+  <Story name="True">
+    <Box width={80}>
+      <TrueButton />
+    </Box>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="False">
+    <Box width={80}>
+      <FalseButton />
+    </Box>
+  </Story>
+</Preview>

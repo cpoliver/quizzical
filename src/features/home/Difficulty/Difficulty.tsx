@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Flex, Button, Text } from "rebass";
 
-import { store } from "../../common/state/Store";
+import { store } from "../../../common/state/Store";
 
-export const DifficultySelector: React.FC = () => {
+export const Difficulty: React.FC = () => {
   const { state, dispatch } = useContext(store);
   const { difficulty } = state;
 

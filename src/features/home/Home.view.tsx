@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Flex, Button, Box, Text, Heading, BoxProps } from "rebass";
 
-import { DifficultySelector } from "./DifficultySelector";
-import { QuestionCount } from "./QuestionCount";
+import { Difficulty } from "./Difficulty/Difficulty";
+import { QuestionCount } from "./QuestionCount/QuestionCount";
 import { store } from "../../common/state/Store";
 
 export const Home: React.FC = () => {
@@ -28,7 +28,7 @@ export const Home: React.FC = () => {
             QUESTION SETTINGS
           </Text>
           <QuestionCount />
-          <DifficultySelector />
+          <Difficulty />
         </Flex>
         <Flex flex={1} flexDirection="column-reverse">
           <Text

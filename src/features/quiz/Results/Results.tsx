@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Flex, Button, Box, Text, Heading } from "rebass";
 
-import { toResults } from "./quizUtils";
-import { TrueButton, FalseButton } from "./AnswerButton";
-import { Html, Progress } from "../../common/components/";
-import { QuestionResult } from "../../common/constants";
-import { store } from "../../common/state/Store";
+import { toResults } from "../quizUtils";
+import { TrueButton, FalseButton } from "../AnswerButton/AnswerButton";
+import { Html, Progress } from "../../../common/components";
+import { QuestionResult } from "../../../common/constants";
+import { store } from "../../../common/state/Store";
 
 export const Results: React.FC = () => {
   const {
