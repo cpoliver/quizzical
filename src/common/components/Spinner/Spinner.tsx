@@ -21,11 +21,10 @@ const spin = keyframes`
    }
 `;
 
-export const Spinner: React.FC<{ show?: boolean }> = () => (
+export const Spinner: React.FC = () => (
   <Flex
     sx={{
       position: "absolute",
-      // background: "background",
       top: 0,
       bottom: 0,
       left: 0,
