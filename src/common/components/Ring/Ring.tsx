@@ -1,6 +1,8 @@
 import React from "react";
+import { keyframes } from "@emotion/core";
 
 import { colors } from "../../theme";
+import styled from "@emotion/styled";
 
 type RingProps = {
   count?: number;
@@ -23,6 +25,25 @@ export const Ring: React.FC<RingProps> = ({
   const circumference = normalizedRadius * 2 * Math.PI;
   const offset = circumference - percent * circumference;
 
+  const animation = keyframes`
+    from {
+      /* TODO: get previous offset */
+      stroke-dashoffset: 200;
+    }
+    to {
+      stroke-dashoffset: ${offset};
+    }
+  `;
+
+  const Circle = styled("circle")`
+    stroke: ${colors.primary};
+    stroke-dasharray: ${circumference} ${circumference};
+    stroke-dashoffset: ${offset};
+    animation: ${animation} 0.5s;
+    stroke-width: ${thickness};
+    fill: transparent;
+  `;
+
   return (
     <svg
       viewBox={`0 0 ${size} ${size}`}
@@ -43,20 +64,7 @@ export const Ring: React.FC<RingProps> = ({
         cx="50%"
         cy="50%"
       />
-      {!spinner && (
-        <circle
-          stroke={colors.primary}
-          strokeDasharray={`${circumference} ${circumference}`}
-          style={{
-            strokeDashoffset: offset,
-          }}
-          strokeWidth={thickness}
-          fill="transparent"
-          r={normalizedRadius}
-          cx="50%"
-          cy="50%"
-        />
-      )}
+      {!spinner && <Circle r={normalizedRadius} cx="50%" cy="50%" />}
     </svg>
   );
 };

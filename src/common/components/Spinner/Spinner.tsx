@@ -36,7 +36,7 @@ export const Spinner: React.FC = () => (
     }}
   >
     <Box
-      css={{
+      sx={{
         height: ringSize,
         width: ringSize,
         animation: `${spin} 1s infinite linear`,
