@@ -6,7 +6,8 @@ export const questions: Question[] = [
     type: "boolean",
     difficulty: "hard",
     question:
-      "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
+      "Hippopotomonstrosesquippedaliophobia is the irrational fear of long words.",
+    // "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
     correct_answer: "True",
     incorrect_answers: ["False"],
   },
@@ -14,9 +15,8 @@ export const questions: Question[] = [
     category: "Entertainment: Video Games",
     type: "boolean",
     difficulty: "hard",
-    question: "short AF",
-    // question:
-    //   "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
+    question:
+      "The first &quot;Metal Gear&quot; game was released for the PlayStation 1.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },

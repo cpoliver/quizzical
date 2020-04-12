@@ -34,12 +34,7 @@ export const Results: React.FC = () => {
           </>
         </Progress>
       </Box>
-      <Flex
-        variant="content"
-        flexDirection="column"
-        overflowY="scroll"
-        // pt={150}
-      >
+      <Flex flexDirection="column" overflowY="scroll" mx={[4, 4, 8]}>
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
         ))}
@@ -59,11 +54,11 @@ const Result: React.FC<QuestionResult> = ({
   given_answer,
   correct_answer,
 }) => (
-  <Flex p={2} m={2} width="100%">
+  <Flex p={2} m="auto" width="100%">
     <Box width={32} mr={3} alignSelf="center">
       {is_correct ? <TrueButton /> : <FalseButton />}
     </Box>
-    <Flex flex={1} flexDirection="column" justifyContent="space-between">
+    <Flex flex={1} flexDirection="column" justifyContent="space-between" my={3}>
       <Box flex={1}>
         <Text fontFamily="body" color="primary">
           <Html html={question} />
