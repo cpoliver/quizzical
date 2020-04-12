@@ -4,7 +4,8 @@ import { Flex, Button, Text } from "rebass";
 import { store } from "../../../common/state/Store";
 
 const buttonStyle = {
-  margin: 2,
+  mx: 2,
+  mt: "-2px",
   cursor: "pointer",
 };
 
@@ -22,13 +23,17 @@ export const Difficulty: React.FC = () => {
         &#x25C0;
       </Button>
       <Text
-        color="primary"
-        fontFamily="body"
-        fontSize={3}
-        fontWeight="bold"
-        m={0}
-        p={0}
-        sx={{ textTransform: "uppercase" }}
+        sx={{
+          color: "primary",
+          fontFamily: "body",
+          fontSize: 3,
+          fontWeight: "bold",
+          m: 0,
+          p: 0,
+          textAlign: "center",
+          textTransform: "uppercase",
+          width: "4em",
+        }}
       >
         {difficulty}
       </Text>
