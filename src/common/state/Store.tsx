@@ -57,11 +57,13 @@ const mockQuizState: QuizState = {
 type QuizSettingsState = {
   difficulty: Difficulty;
   questionCount: number;
+  previousQuestionCount: number;
 };
 
 const initQuizSettingsState: QuizSettingsState = {
   difficulty: "medium",
   questionCount,
+  previousQuestionCount: 0,
 };
 
 // App Settings State
@@ -135,12 +137,14 @@ export const reducer: React.Reducer<StoreState, Action> = (
         state.questionCount + QUESTION_COUNT_INCREMENT,
         MAX_QUESTION_COUNT,
       ),
+      previousQuestionCount: state.questionCount,
     }),
     DECREASE_QUESTION_COUNT: merge({
       questionCount: Math.max(
         state.questionCount - QUESTION_COUNT_INCREMENT,
         MIN_QUESTION_COUNT,
       ),
+      previousQuestionCount: state.questionCount,
     }),
 
     // App Settings

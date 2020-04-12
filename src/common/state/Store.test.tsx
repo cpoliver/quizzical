@@ -89,6 +89,7 @@ describe("increase question count", () => {
     expect(actual).toEqual({
       ...state.init,
       questionCount: 15,
+      previousQuestionCount: 10,
     });
   });
 
@@ -96,7 +97,10 @@ describe("increase question count", () => {
     const maxQs = { ...state.init, questionCount: MAX_QUESTION_COUNT };
     const actual = reducer(maxQs, ["INCREASE_QUESTION_COUNT"]);
 
-    expect(actual).toEqual(maxQs);
+    expect(actual).toEqual({
+      ...maxQs,
+      previousQuestionCount: MAX_QUESTION_COUNT,
+    });
   });
 });
 
@@ -107,6 +111,7 @@ describe("decrease question count", () => {
     expect(actual).toEqual({
       ...state.init,
       questionCount: 5,
+      previousQuestionCount: 10,
     });
   });
 
@@ -114,7 +119,10 @@ describe("decrease question count", () => {
     const minQs = { ...state.init, questionCount: MIN_QUESTION_COUNT };
     const actual = reducer(minQs, ["DECREASE_QUESTION_COUNT"]);
 
-    expect(actual).toEqual(minQs);
+    expect(actual).toEqual({
+      ...minQs,
+      previousQuestionCount: MIN_QUESTION_COUNT,
+    });
   });
 });
 
