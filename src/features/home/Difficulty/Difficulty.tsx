@@ -3,6 +3,11 @@ import { Flex, Button, Text } from "rebass";
 
 import { store } from "../../../common/state/Store";
 
+const buttonStyle = {
+  margin: 2,
+  cursor: "pointer",
+};
+
 export const Difficulty: React.FC = () => {
   const { state, dispatch } = useContext(store);
   const { difficulty } = state;
@@ -10,10 +15,11 @@ export const Difficulty: React.FC = () => {
   return (
     <Flex alignItems="center">
       <Button
-        variant="transparent"
         onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
+        sx={buttonStyle}
+        variant="transparent"
       >
-        &lt;
+        &#x25C0;
       </Button>
       <Text
         color="primary"
@@ -27,10 +33,11 @@ export const Difficulty: React.FC = () => {
         {difficulty}
       </Text>
       <Button
-        variant="transparent"
         onClick={() => dispatch(["INCREASE_DIFFICULTY"])}
+        sx={buttonStyle}
+        variant="transparent"
       >
-        &gt;
+        &#x25B6;
       </Button>
     </Flex>
   );
