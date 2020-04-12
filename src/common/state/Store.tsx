@@ -63,7 +63,7 @@ type QuizSettingsState = {
 const initQuizSettingsState: QuizSettingsState = {
   difficulty: "medium",
   questionCount,
-  previousQuestionCount: 0,
+  previousQuestionCount: questionCount,
 };
 
 // App Settings State

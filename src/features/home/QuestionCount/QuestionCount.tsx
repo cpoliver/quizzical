@@ -7,7 +7,7 @@ import { MAX_QUESTION_COUNT } from "../../../common/constants";
 
 export const QuestionCount = () => {
   const { state, dispatch } = useContext(store);
-  const { questionCount } = state;
+  const { questionCount, previousQuestionCount } = state;
 
   const buttonSize = 40;
   const ringSize = 140;
@@ -26,7 +26,11 @@ export const QuestionCount = () => {
       </Button>
       <Box sx={{ position: "relative", height: ringSize, width: ringSize }}>
         <Box flex={1}>
-          <Ring count={questionCount} total={MAX_QUESTION_COUNT} />
+          <Ring
+            count={questionCount}
+            previousCount={previousQuestionCount}
+            total={MAX_QUESTION_COUNT}
+          />
         </Box>
         <Flex
           sx={{
