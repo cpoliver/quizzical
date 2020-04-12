@@ -26,7 +26,15 @@ export const Question: React.FC = () => {
       </Box>
       <Box variant="content">
         <Flex flex={1} m={4}>
-          <Text fontFamily="body" color="primary" fontSize={5}>
+          <Text
+            sx={{
+              fontFamily: "body",
+              color: "primary",
+              fontSize: 5,
+              hyphens: "auto",
+              overflowWrap: "break-word",
+            }}
+          >
             <Html html={question} />
           </Text>
         </Flex>
