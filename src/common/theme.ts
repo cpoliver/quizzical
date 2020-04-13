@@ -1,5 +1,3 @@
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
 // Theme UI spec: https://theme-ui.com/customize
 
 const DEFAULT_FONTS =
@@ -56,22 +54,33 @@ const variants = {
   },
   buttons: {
     primary: {
+      borderColor: "primary",
+      borderStyle: "solid",
+      borderWidth: 3,
       backgroundColor: "primary",
       borderRadius: 9001,
       boxShadow: "default",
       color: "background",
+      cursor: "pointer",
       fontFamily: "body",
       fontSize: 3,
       fontWeight: "semi",
+      transition: "background-color .4s, color .2s",
       width: "100%",
+      "&:hover": {
+        backgroundColor: "background",
+        color: "primary",
+      },
     },
     questionCount: {
-      position: "relative",
+      cursor: "pointer",
       backgroundColor: "background",
+      position: "relative",
       zIndex: 1,
     },
     transparent: {
       backgroundColor: "transparent",
+      cursor: "pointer",
       m: 0,
       p: 0,
     },
@@ -94,6 +103,7 @@ export const theme = {
   colors,
   shadows: {
     default: "0px 1px 1px rgba(0,0,0,0.2)",
+    hover: "inset 0px 20px 20px rgba(0,0,0,0.1)",
   },
   ...typography,
   ...variants,

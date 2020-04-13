@@ -18,7 +18,7 @@ const styles: { [key: string]: SxStyleProp } = {
     height: "100%",
     m: "0 auto",
     maxHeight: "50em",
-    maxWidth: ["initial", "75%", "50%", "40%"],
+    maxWidth: ["initial", "75%", "50em"],
     minWidth: "20em",
   },
   outer: {

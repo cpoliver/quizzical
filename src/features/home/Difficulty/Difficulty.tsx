@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Flex, Button, Text } from "rebass";
+import { Flex, Button, Text, SxStyleProp } from "rebass";
 
 import { store } from "../../../common/state/Store";
 
-const buttonStyle = {
+const buttonStyle: SxStyleProp = {
   mx: 2,
-  mt: "-2px",
+  p: 0,
+  position: "relative",
+  top: "-5%",
   cursor: "pointer",
 };
 
@@ -14,7 +16,7 @@ export const Difficulty: React.FC = () => {
   const { difficulty } = state;
 
   return (
-    <Flex alignItems="center">
+    <Flex alignItems="center" justifyContent="center">
       <Button
         onClick={() => dispatch(["DECREASE_DIFFICULTY"])}
         sx={buttonStyle}
@@ -32,7 +34,7 @@ export const Difficulty: React.FC = () => {
           p: 0,
           textAlign: "center",
           textTransform: "uppercase",
-          width: "4em",
+          width: "5rem",
         }}
       >
         {difficulty}
