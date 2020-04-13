@@ -4,11 +4,11 @@ import { Flex, Button, Text, SxStyleProp } from "rebass";
 import { store } from "../../../common/state/Store";
 
 const buttonStyle: SxStyleProp = {
+  cursor: "pointer",
   mx: 2,
   p: 0,
   position: "relative",
-  top: "-5%",
-  cursor: "pointer",
+  top: "-2%",
 };
 
 export const Difficulty: React.FC = () => {
@@ -22,7 +22,7 @@ export const Difficulty: React.FC = () => {
         sx={buttonStyle}
         variant="transparent"
       >
-        &#x25C0;
+        <Text fontSize={0}>&#x25C0;</Text>
       </Button>
       <Text
         sx={{
@@ -44,7 +44,7 @@ export const Difficulty: React.FC = () => {
         sx={buttonStyle}
         variant="transparent"
       >
-        &#x25B6;
+        <Text fontSize={0}>&#x25B6;</Text>
       </Button>
     </Flex>
   );

@@ -30,18 +30,18 @@ export const Home: React.FC = () => {
           <QuestionCount />
           <Difficulty />
         </Flex>
-        <Flex flex={1} flexDirection="column-reverse">
+        <Flex flex={1} justifyContent="center" flexDirection="column">
           <Text
             fontFamily="body"
-            fontSize={3}
-            mx={4}
-            mb={6}
+            fontSize={2}
+            m={5}
+            mb={0}
             textAlign="center"
             color="primary"
           >
             You will be presented with {questionCount}
             <br />
-            {difficulty} True or False questions
+            {difficulty.toUpperCase()} True or False questions
           </Text>
         </Flex>
       </Flex>
