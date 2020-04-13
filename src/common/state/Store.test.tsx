@@ -1,4 +1,4 @@
-import { evolve, take, inc } from "ramda";
+import { evolve, take, inc, assoc } from "ramda";
 
 import {
   initState,
@@ -12,10 +12,9 @@ import { questions } from "../../features/quiz/quizData";
 
 const state: { [key: string]: StoreState } = {
   init: initState,
-  loading: {
-    ...initState,
-    isLoading: true,
-  },
+  loading: assoc("isLoading", true, initState),
+  easy: assoc("difficulty", "easy", initState),
+  hard: assoc("difficulty", "hard", initState),
   inProgress: evolve(
     {
       currentQuestion: inc,
@@ -56,11 +55,10 @@ describe("increase difficulty", () => {
     });
   });
 
-  it("should do nothing to the difficulty, when at the maximum", () => {
-    const hardState = { ...state.init, difficulty: "hard" };
-    const actual = reducer(hardState, ["INCREASE_DIFFICULTY"]);
+  it("should loop around to the minimum difficulty, when at the maximum", () => {
+    const actual = reducer(state.hard, ["INCREASE_DIFFICULTY"]);
 
-    expect(actual).toEqual(hardState);
+    expect(actual).toEqual(state.easy);
   });
 });
 
@@ -74,11 +72,10 @@ describe("decrease difficulty", () => {
     });
   });
 
-  it("should do nothing to the difficulty, when at the minimum", () => {
-    const easyState = { ...state.init, difficulty: "easy" };
-    const actual = reducer(easyState, ["DECREASE_DIFFICULTY"]);
+  it("should loop around to the maximum difficulty, when at the minimum", () => {
+    const actual = reducer(state.easy, ["DECREASE_DIFFICULTY"]);
 
-    expect(actual).toEqual(easyState);
+    expect(actual).toEqual(state.hard);
   });
 });
 
@@ -164,10 +161,7 @@ describe("fetch questions", () => {
   it("should trigger the loading state", () => {
     const actual = reducer(state.init, ["FETCH_QUESTIONS"]);
 
-    expect(actual).toEqual({
-      ...state.init,
-      isLoading: true,
-    });
+    expect(actual).toEqual(state.loading);
   });
 });
 

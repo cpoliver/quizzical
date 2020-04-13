@@ -122,15 +122,18 @@ export const reducer: React.Reducer<StoreState, Action> = (
     INCREASE_DIFFICULTY: merge({
       difficulty:
         DIFFICULTY[
-          Math.min(
-            difficultyToNumber(state.difficulty) + 1,
-            DIFFICULTY.length - 1,
-          )
+          difficultyToNumber(state.difficulty) + 1 < DIFFICULTY.length
+            ? difficultyToNumber(state.difficulty) + 1
+            : 0
         ],
     }),
     DECREASE_DIFFICULTY: merge({
       difficulty:
-        DIFFICULTY[Math.max(difficultyToNumber(state.difficulty) - 1, 0)],
+        DIFFICULTY[
+          (difficultyToNumber(state.difficulty) > 0
+            ? difficultyToNumber(state.difficulty)
+            : DIFFICULTY.length) - 1
+        ],
     }),
     INCREASE_QUESTION_COUNT: merge({
       questionCount: Math.min(
