@@ -34,14 +34,6 @@ const buttons = {
 
 export const variants = {
   buttons,
-  appName: {
-    textShadow: "default",
-    color: "primary",
-    fontSize: 5,
-    fontWeight: "bold",
-    mb: -2,
-    textAlign: "center",
-  },
   content: {
     alignItems: "center",
     flex: 1,

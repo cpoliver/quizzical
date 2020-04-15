@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Flex, Box, Text, Heading } from "rebass";
+import { Flex } from "rebass";
 
 import { Question } from "./Question/Question";
 import { Results } from "./Results/Results";

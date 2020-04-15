@@ -1,10 +1,19 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Flex, Button, Box, Text, Heading, BoxProps } from "rebass";
+import { Flex, Button, Box, Text, Heading, SxStyleProp } from "rebass";
 
 import { Difficulty } from "./Difficulty/Difficulty";
 import { QuestionCount } from "./QuestionCount/QuestionCount";
 import { store } from "../../common/state/Store";
+
+const appNameStyles: SxStyleProp = {
+  color: "primary",
+  fontSize: 5,
+  fontWeight: "bold",
+  mb: -2,
+  textAlign: "center",
+  textShadow: "default",
+};
 
 export const Home: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -16,8 +25,8 @@ export const Home: React.FC = () => {
   return (
     <Flex variant="wrapper">
       <Box variant="header" mt={5}>
-        <Heading variant="appName">LET'S GET</Heading>
-        <Heading variant="appName" fontSize={6}>
+        <Heading sx={appNameStyles}>LET'S GET</Heading>
+        <Heading sx={appNameStyles} fontSize={6}>
           QUiZZ!CAL
         </Heading>
       </Box>

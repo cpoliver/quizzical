@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Flex, SxProps } from "rebass";
+import { Flex, SxStyleProp } from "rebass";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ThemeProvider, SxStyleProp } from "theme-ui";
+import { ThemeProvider } from "theme-ui";
 
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./common/state/Store";
