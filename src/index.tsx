@@ -10,7 +10,6 @@ import { theme } from "./common/theme";
 
 import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
-import { Settings } from "./features/settings/Settings.view";
 
 const styles: { [key: string]: SxStyleProp } = {
   inner: {
@@ -40,9 +39,6 @@ ReactDOM.render(
             <Switch>
               <Route path="/quiz">
                 <Quiz />
-              </Route>
-              <Route path="/settings">
-                <Settings />
               </Route>
               <Route path="/">
                 <Home />

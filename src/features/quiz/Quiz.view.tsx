@@ -10,10 +10,10 @@ export const Quiz: React.FC = () => {
   const { state, dispatch } = useContext(store);
   const { questionCount, difficulty, currentQuestion, questions } = state;
 
-  const API_URL = `https://opentdb.com/api.php?amount=${questionCount}&difficulty=${difficulty}&type=boolean`;
-
   const loadQuestions = () =>
-    fetch(API_URL)
+    fetch(
+      `https://opentdb.com/api.php?amount=${questionCount}&difficulty=${difficulty}&type=boolean`,
+    )
       .then(res => res.json())
       .then(data => dispatch(["FETCH_QUESTIONS_SUCCESS", data.results]))
       .catch(err => dispatch(["FETCH_QUESTIONS_ERROR", err]));

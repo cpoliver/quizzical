@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Flex, Button, Box, Text, Heading } from "rebass";
+import { Flex, Button, Box, Heading } from "rebass";
+import * as hex2rgb from "hex2rgb";
 
+import { Result } from "./Result";
 import { toResults } from "../quizUtils";
-import { TrueButton, FalseButton } from "../AnswerButton/AnswerButton";
-import { Html, Progress } from "../../../common/components";
+import { Progress } from "../../../common/components";
 import { QuestionResult } from "../../../common/constants";
 import { store } from "../../../common/state/Store";
+import { colors } from "../../../common/theme";
 
 export const Results: React.FC = () => {
   const {
@@ -20,7 +22,7 @@ export const Results: React.FC = () => {
 
   return (
     <Flex variant="wrapper">
-      <Box variant="header">
+      <Box variant="header" sx={{ position: "relative" }}>
         <Heading fontSize={3} textAlign="center" mb={2} color="primary">
           {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}!
         </Heading>
@@ -33,13 +35,15 @@ export const Results: React.FC = () => {
             QUESTIONS CORRECTLY
           </>
         </Progress>
+        <Fade />
       </Box>
       <Flex flexDirection="column" overflowY="scroll" mx={[4, 4, 8]}>
         {results.map((result: QuestionResult, i: number) => (
           <Result key={i} {...result} />
         ))}
       </Flex>
-      <Box variant="footer">
+      <Box variant="footer" sx={{ position: "relative" }}>
+        <Fade flip />
         <Button onClick={() => dispatch(["RESET_QUIZ_STATE"])} p={5}>
           Play Again?
         </Button>
@@ -48,35 +52,26 @@ export const Results: React.FC = () => {
   );
 };
 
-const Result: React.FC<QuestionResult> = ({
-  question,
-  is_correct,
-  given_answer,
-  correct_answer,
-}) => (
-  <Flex p={2} m="auto" width="100%">
-    <Box width={32} mr={3} alignSelf="center">
-      {is_correct ? <TrueButton /> : <FalseButton />}
-    </Box>
-    <Flex flex={1} flexDirection="column" justifyContent="space-between" my={3}>
-      <Box flex={1}>
-        <Text fontFamily="body" color="primary">
-          <Html html={question} />
-        </Text>
-      </Box>
-      <Box mt={1}>
-        <Text
-          sx={{
-            color: "primary",
-            fontFamily: "body",
-            fontSize: 0,
-            textTransform: "uppercase",
-          }}
-        >
-          {is_correct ? "Your" : "Correct"} Answer:{" "}
-          <strong>{is_correct ? given_answer : correct_answer}</strong>
-        </Text>
-      </Box>
-    </Flex>
-  </Flex>
+const FADE_HEIGHT = 50;
+
+const toRgba = (hex: string, alpha: number): string => {
+  const [r, g, b] = hex2rgb(hex).rgb;
+  return `rgba(${r},${g},${b},${alpha})`;
+};
+
+const Fade: React.FC<{ flip?: boolean }> = ({ flip }) => (
+  <Box
+    sx={{
+      background: `linear-gradient(${flip ? 180 : 0}deg, ${toRgba(
+        colors.background,
+        0,
+      )} 0%, ${toRgba(colors.background, 1)} 100%)`,
+      bottom: flip ? "initial" : -FADE_HEIGHT,
+      top: flip ? -FADE_HEIGHT : "initial",
+      height: FADE_HEIGHT,
+      position: "absolute",
+      flex: 1,
+      width: "100%",
+    }}
+  />
 );
