@@ -1,12 +1,7 @@
 import { evolve, take, inc, assoc } from "ramda";
 
-import {
-  initState,
-  reducer,
-  StoreState,
-  AppSettingsState,
-  difficultyToNumber,
-} from "./Store";
+import { reducer, difficultyToNumber } from "./Store";
+import { initState, StoreState } from "./storeState";
 import { Answer, MAX_QUESTION_COUNT, MIN_QUESTION_COUNT } from "../constants";
 import { questions } from "../../features/quiz/quizData";
 
@@ -119,40 +114,6 @@ describe("decrease question count", () => {
     expect(actual).toEqual({
       ...minQs,
       previousQuestionCount: MIN_QUESTION_COUNT,
-    });
-  });
-});
-
-describe("update settings", () => {
-  it("should merge the app settings when changing some settings", () => {
-    const theme = "g2i";
-    const actual = reducer(state.init, ["UPDATE_SETTINGS", { theme }]);
-
-    expect(actual).toEqual({
-      ...state.init,
-      settings: {
-        theme,
-        language: "english",
-        showIntroAnimations: true,
-      },
-    });
-  });
-
-  it("should update the app settings when changing all settings", () => {
-    const settings = {
-      language: "spanish",
-      showIntroAnimations: false,
-      theme: "dark",
-    };
-
-    const actual = reducer(state.init, [
-      "UPDATE_SETTINGS",
-      settings as AppSettingsState,
-    ]);
-
-    expect(actual).toEqual({
-      ...state.init,
-      settings,
     });
   });
 });

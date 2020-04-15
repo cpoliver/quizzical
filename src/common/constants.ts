@@ -1,9 +1,3 @@
-export const LANGUAGE = ["english", "spanish", "shouty_english"] as const;
-export type Language = typeof LANGUAGE[number];
-
-export const THEME = ["default", "dark", "g2i"] as const;
-export type Theme = typeof THEME[number];
-
 export const DIFFICULTY = ["easy", "medium", "hard"] as const;
 export type Difficulty = typeof DIFFICULTY[number];
 

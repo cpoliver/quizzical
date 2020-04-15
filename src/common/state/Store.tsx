@@ -3,99 +3,21 @@ import {
   always,
   propOr,
   evolve,
-  repeat,
   append,
   merge as unflippedMerge,
   flip,
   inc,
 } from "ramda";
 
+import { initQuizState, initState, mockState, StoreState } from "./storeState";
 import { Action } from "./actions";
 import {
-  Answer,
-  Question,
-  Language,
-  Theme,
   Difficulty,
   DIFFICULTY,
   MAX_QUESTION_COUNT,
   QUESTION_COUNT_INCREMENT,
   MIN_QUESTION_COUNT,
 } from "../constants";
-import { questions as mockQuestions } from "../../features/quiz/quizData";
-
-// Quiz State
-
-type QuizState = {
-  error: string | null;
-  isLoading: boolean;
-  answers: Answer[];
-  questions: Question[];
-  currentQuestion: number;
-};
-
-const questionCount = QUESTION_COUNT_INCREMENT * 2;
-
-const initQuizState: QuizState = {
-  error: null,
-  isLoading: false,
-  answers: [],
-  questions: [],
-  currentQuestion: 0,
-};
-
-const mockQuizState: QuizState = {
-  error: null,
-  isLoading: false,
-  answers: repeat("False", questionCount) as Answer[],
-  questions: mockQuestions,
-  currentQuestion: 0,
-};
-
-// Quiz Settings State
-
-type QuizSettingsState = {
-  difficulty: Difficulty;
-  questionCount: number;
-  previousQuestionCount: number;
-};
-
-const initQuizSettingsState: QuizSettingsState = {
-  difficulty: "medium",
-  questionCount,
-  previousQuestionCount: questionCount,
-};
-
-// App Settings State
-
-export type AppSettingsState = {
-  language: Language;
-  theme: Theme;
-  showIntroAnimations: boolean;
-};
-
-const initAppSettingsState: AppSettingsState = {
-  language: "english",
-  theme: "default",
-  showIntroAnimations: true,
-};
-
-// Store State
-
-export type StoreState = QuizState &
-  QuizSettingsState & { settings: AppSettingsState };
-
-export const initState: StoreState = {
-  ...initQuizState,
-  ...initQuizSettingsState,
-  settings: initAppSettingsState,
-};
-
-export const mockState: StoreState = {
-  ...mockQuizState,
-  ...initQuizSettingsState,
-  settings: initAppSettingsState,
-};
 
 // Reducer
 
