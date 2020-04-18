@@ -30,7 +30,7 @@ export const Question: React.FC = () => {
             sx={{
               fontFamily: "body",
               color: "primary",
-              fontSize: 5,
+              fontSize: [4, 5],
               hyphens: "auto",
               overflowWrap: "break-word",
             }}

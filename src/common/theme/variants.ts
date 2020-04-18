@@ -44,7 +44,7 @@ export const variants = {
   footer: {
     alignSelf: "center",
     width: "90%",
-    p: 6,
+    pb: 2,
   },
   header: {
     alignSelf: "stretch",
