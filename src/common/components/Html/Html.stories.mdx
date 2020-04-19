@@ -3,7 +3,7 @@ import { Box } from "rebass";
 
 import { Html } from "./Html";
 
-<Meta title="Common | Html" />
+<Meta title="Common | Html" parameters={{ backgrounds: [{ name: "white", value: "#fff", default: true }] }}/>
 
 # Preview
 
@@ -21,7 +21,7 @@ import { Html } from "./Html";
 
 <Preview>
   <Story name="Text">
-    <Html html="This is a string of regular text" />
+    <Html onClick={() => console.log('holy shit!')} html="This is a string of regular text" />
   </Story>
 </Preview>
 
