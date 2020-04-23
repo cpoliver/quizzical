@@ -10,6 +10,7 @@ import { theme } from "./common/theme";
 
 import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
+import { LayoutTest } from "./common/components/LayoutTest/LayoutTest";
 
 const styles: { [key: string]: SxStyleProp } = {
   inner: {
@@ -31,24 +32,27 @@ const styles: { [key: string]: SxStyleProp } = {
 };
 
 ReactDOM.render(
-  <Flex sx={styles.outer}>
-    <Flex sx={styles.inner}>
-      <ThemeProvider theme={theme}>
-        <StoreProvider>
-          <Router>
-            <Switch>
+  <ThemeProvider theme={theme}>
+    <StoreProvider>
+      <Router>
+        <Switch>
+          <Route path="/test">
+            <LayoutTest />
+          </Route>
+          <Flex sx={styles.outer}>
+            <Flex sx={styles.inner}>
               <Route path="/quiz">
                 <Quiz />
               </Route>
               <Route path="/">
                 <Home />
               </Route>
-            </Switch>
-          </Router>
-        </StoreProvider>
-      </ThemeProvider>
-    </Flex>
-  </Flex>,
+            </Flex>
+          </Flex>
+        </Switch>
+      </Router>
+    </StoreProvider>
+  </ThemeProvider>,
   document.getElementById("root"),
 );
 

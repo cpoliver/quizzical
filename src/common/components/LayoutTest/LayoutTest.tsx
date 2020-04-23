@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex } from "rebass";
+import { Button, Box, Flex } from "rebass";
 
 export const LayoutTest: React.FC = () => (
   <Flex
@@ -20,20 +20,41 @@ export const LayoutTest: React.FC = () => (
         flexDirection: "column",
         backgroundColor: "#666",
         minWidth: 320,
-        minHeight: 480,
+        minHeight: 568,
       }}
     >
-      <Box as="header">HEADER</Box>
-      <Box
+      <Flex
+        as="header"
+        sx={{
+          //
+          p: 3,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        HEADER
+      </Flex>
+      <Flex
         as="main"
         sx={{
           flex: 1,
           backgroundColor: "#ddd",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 3,
         }}
       >
         CONTENT
-      </Box>
-      <Box as="footer">FOOTER</Box>
+      </Flex>
+      <Flex
+        as="footer"
+        sx={{
+          //
+          p: 3,
+        }}
+      >
+        <Button variant="primary">PLAY!</Button>
+      </Flex>
     </Flex>
   </Flex>
 );
