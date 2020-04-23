@@ -17,22 +17,33 @@ export const LayoutTest: React.FC = () => (
   >
     <Flex
       sx={{
-        flexDirection: "column",
         backgroundColor: "#666",
-        minWidth: 320,
+        flex: 1,
+        flexDirection: "column",
+        height: "100%",
+        // maxHeight: 1080,
+        // maxWidth: 1080,
         minHeight: 568,
+        minWidth: 320,
       }}
     >
       <Flex
         as="header"
         sx={{
           //
+          flexDirection: "column",
           p: 3,
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "center",
+          textAlign: "center",
         }}
       >
-        HEADER
+        <Flex flex={1}>
+          <Box flex={1}>Spacer</Box>
+          <Box flex={4}>Title</Box>
+          <Box flex={1}>Button</Box>
+        </Flex>
+        <Box flex={1}>Progress</Box>
       </Flex>
       <Flex
         as="main"
