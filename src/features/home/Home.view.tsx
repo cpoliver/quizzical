@@ -4,6 +4,7 @@ import { Flex, Button, Box, Text, Heading, SxStyleProp } from "rebass";
 
 import { Difficulty } from "./Difficulty/Difficulty";
 import { QuestionCount } from "./QuestionCount/QuestionCount";
+import { Footer } from "../../common/components";
 import { store } from "../../common/state/Store";
 
 const appNameStyles: SxStyleProp = {
@@ -15,6 +16,8 @@ const appNameStyles: SxStyleProp = {
   textShadow: "default",
 };
 
+const HEADER_FOOTER_HEIGHT = 150;
+
 export const Home: React.FC = () => {
   const { state, dispatch } = useContext(store);
 
@@ -23,42 +26,56 @@ export const Home: React.FC = () => {
   const { questionCount, difficulty } = state;
 
   return (
-    <Flex variant="wrapper">
-      <Box variant="header" mt={5}>
-        <Heading sx={appNameStyles}>LET'S GET</Heading>
-        <Heading sx={appNameStyles} fontSize={6}>
-          QUiZZ!CAL
-        </Heading>
-      </Box>
-      <Flex variant="content">
-        <Box flex={1} />
-        <Flex alignItems="center" flexDirection="column">
-          <Text color="primary" fontFamily="body" fontWeight="bold">
-            QUESTION SETTINGS
-          </Text>
-          <QuestionCount />
-          <Difficulty />
-        </Flex>
-        <Flex flex={1} justifyContent="center" flexDirection="column">
-          <Text
-            fontFamily="body"
-            fontSize={2}
-            m={5}
-            mb={0}
-            textAlign="center"
-            color="primary"
-          >
-            You will be presented with {questionCount}
-            <br />
-            {difficulty.toUpperCase()} True or False questions
-          </Text>
-        </Flex>
+    <>
+      <Flex
+        height={HEADER_FOOTER_HEIGHT}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box backgroundColor="red">
+          <Heading sx={appNameStyles}>LET'S GET</Heading>
+          <Heading sx={appNameStyles} fontSize={6}>
+            QUiZZ!CAL
+          </Heading>
+        </Box>
       </Flex>
-      <Box variant="footer">
+      <Flex
+        sx={{
+          flex: 1,
+          flexDirection: "column",
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "tomato",
+        }}
+      >
+        <Text color="primary" fontFamily="body" fontWeight="bold">
+          QUESTION SETTINGS
+        </Text>
+        <QuestionCount />
+        <Difficulty />
+        <Text
+          sx={{
+            fontFamily: "body",
+            fontSize: 2,
+            position: "absolute",
+            bottom: "15%",
+            textAlign: "center",
+            color: "primary",
+          }}
+        >
+          You will be presented with {questionCount}
+          <br />
+          {difficulty.toUpperCase()} True or False questions
+        </Text>
+      </Flex>
+      <Footer height={HEADER_FOOTER_HEIGHT} justifyContent="flex-end">
         <Link to="/quiz">
-          <Button p={5}>PLAY!</Button>
+          <Button alignSelf="flex-end" p={3}>
+            PLAY!
+          </Button>
         </Link>
-      </Box>
-    </Flex>
+      </Footer>
+    </>
   );
 };

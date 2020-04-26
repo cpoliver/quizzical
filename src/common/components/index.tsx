@@ -1,3 +1,5 @@
+export * from "./Footer/Footer";
+export * from "./Header/Header";
 export * from "./Html/Html";
 export * from "./Progress/Progress";
 export * from "./Result/Result";
