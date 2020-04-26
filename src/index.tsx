@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Flex, SxStyleProp } from "rebass";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "theme-ui";
 
@@ -8,49 +7,25 @@ import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./common/state/Store";
 import { theme } from "./common/theme";
 
+import { Shell } from "./common/components";
 import { Home } from "./features/home/Home.view";
 import { Quiz } from "./features/quiz/Quiz.view";
-import { LayoutTest } from "./common/components/LayoutTest/LayoutTest";
-
-const styles: { [key: string]: SxStyleProp } = {
-  inner: {
-    flex: "1",
-    height: "100%",
-    m: "0 auto",
-    maxHeight: "50em",
-    maxWidth: ["initial", "75%", "50em"],
-    minWidth: "20em",
-  },
-  outer: {
-    alignItems: "center",
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-    right: 0,
-    top: 0,
-  },
-};
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <StoreProvider>
-      <Router>
-        <Switch>
-          <Route path="/test">
-            <LayoutTest />
-          </Route>
-          <Flex sx={styles.outer}>
-            <Flex sx={styles.inner}>
-              <Route path="/quiz">
-                <Quiz />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Flex>
-          </Flex>
-        </Switch>
-      </Router>
+      <Shell>
+        <Router>
+          <Switch>
+            <Route path="/quiz">
+              <Quiz />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </Shell>
     </StoreProvider>
   </ThemeProvider>,
   document.getElementById("root"),

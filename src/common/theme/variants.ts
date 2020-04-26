@@ -18,6 +18,7 @@ const buttons = {
       color: "primary",
     },
   },
+  // move
   questionCount: {
     cursor: "pointer",
     backgroundColor: "background",
@@ -34,23 +35,6 @@ const buttons = {
 
 export const variants = {
   buttons,
-  content: {
-    alignItems: "center",
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    p: 3,
-  },
-  footer: {
-    alignSelf: "center",
-    width: "90%",
-    pb: 2,
-  },
-  header: {
-    alignSelf: "stretch",
-    px: 4,
-    py: 5,
-  },
   wrapper: {
     alignItems: "center",
     flex: 1,
