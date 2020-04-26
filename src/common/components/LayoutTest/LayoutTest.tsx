@@ -21,8 +21,9 @@ export const LayoutTest: React.FC = () => (
         flex: 1,
         flexDirection: "column",
         height: "100%",
-        // maxHeight: 1080,
-        // maxWidth: 1080,
+        margin: [0, 100],
+        maxHeight: 900,
+        maxWidth: 1080,
         minHeight: 568,
         minWidth: 320,
       }}
@@ -30,11 +31,10 @@ export const LayoutTest: React.FC = () => (
       <Flex
         as="header"
         sx={{
-          //
-          flexDirection: "column",
-          p: 3,
           alignItems: "stretch",
+          flexDirection: "column",
           justifyContent: "center",
+          p: 3,
           textAlign: "center",
         }}
       >
@@ -48,9 +48,9 @@ export const LayoutTest: React.FC = () => (
       <Flex
         as="main"
         sx={{
-          flex: 1,
-          backgroundColor: "#ddd",
           alignItems: "center",
+          backgroundColor: "#ddd",
+          flex: 1,
           justifyContent: "center",
           p: 3,
         }}
@@ -60,11 +60,20 @@ export const LayoutTest: React.FC = () => (
       <Flex
         as="footer"
         sx={{
-          //
           p: 3,
         }}
       >
-        <Button variant="primary">PLAY!</Button>
+        <Box
+          sx={{
+            flex: 1,
+            alignSelf: "center",
+            backgroundColor: "tomato",
+            margin: "auto",
+            maxWidth: ["initial", 420],
+          }}
+        >
+          <Button variant="primary">PLAY!</Button>
+        </Box>
       </Flex>
     </Flex>
   </Flex>

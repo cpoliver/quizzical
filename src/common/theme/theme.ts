@@ -2,7 +2,7 @@ import { colors } from "./colors";
 import { typography } from "./typography";
 import { variants } from "./variants";
 
-const breakpoints = ["40em", "52em", "64em", "70em"];
+const breakpoints = ["40em", "52em", "64em"];
 
 const space = [0, 4, 8, 12, 16, 24, 32, 48, 64];
 
