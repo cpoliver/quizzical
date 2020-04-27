@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Flex, Button, Box, Text, Heading } from "rebass";
+import { Flex, Button, Box, Text } from "rebass";
 
 import { FalseButton, TrueButton } from "../AnswerButton/AnswerButton";
 import { store } from "../../../common/state/Store";
-import { Html, Progress } from "../../../common/components";
+import { Html, Progress, Header, Footer } from "../../../common/components";
 
 export const Question: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -14,23 +14,20 @@ export const Question: React.FC = () => {
 
   return (
     <Flex flexDirection="column" flex={1}>
-      <Box variant="header">
-        <Heading fontSize={2} textAlign="center" mb={2} color="primary">
-          {category}
-        </Heading>
+      <Header title={category}>
         <Progress
           current={current}
           total={total}
           children={`${current}/${total}`}
         />
-      </Box>
-      <Box variant="content">
+      </Header>
+      <Box flex={1} px={[2, 8]}>
         <Flex flex={1} m={4}>
           <Text
             sx={{
               fontFamily: "body",
               color: "primary",
-              fontSize: [4, 5],
+              fontSize: [4, 5, 6],
               hyphens: "auto",
               overflowWrap: "break-word",
             }}
@@ -39,24 +36,26 @@ export const Question: React.FC = () => {
           </Text>
         </Flex>
       </Box>
-      <Flex variant="footer" justifyContent="space-between">
-        <Button
-          variant="transparent"
-          onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
-        >
-          <Box width={80}>
-            <TrueButton />
-          </Box>
-        </Button>
-        <Button
-          variant="transparent"
-          onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
-        >
-          <Box width={80}>
-            <FalseButton />
-          </Box>
-        </Button>
-      </Flex>
+      <Footer>
+        <Flex justifyContent="space-between">
+          <Button
+            variant="transparent"
+            onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
+          >
+            <Box width={80}>
+              <TrueButton />
+            </Box>
+          </Button>
+          <Button
+            variant="transparent"
+            onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
+          >
+            <Box width={80}>
+              <FalseButton />
+            </Box>
+          </Button>
+        </Flex>
+      </Footer>
     </Flex>
   );
 };

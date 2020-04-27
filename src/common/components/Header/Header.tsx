@@ -25,7 +25,15 @@ export const Header: React.FC<HeaderProps> = ({
     <Flex flex={1}>
       <Box flex={1} />
       <Box flex={4}>
-        <Heading fontSize={3} textAlign="center" mb={2} color="primary">
+        <Heading
+          sx={{
+            color: "primary",
+            fontSize: 3,
+            mb: 2,
+            textAlign: "center",
+            textTransform: "uppercase",
+          }}
+        >
           {title}
         </Heading>
       </Box>

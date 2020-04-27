@@ -22,7 +22,7 @@ export const Shell: React.FC = ({ children }) => (
         height: "100%",
         margin: "auto",
         maxHeight: 900,
-        maxWidth: 1080,
+        maxWidth: 960,
         minHeight: 568,
         minWidth: 320,
       }}
