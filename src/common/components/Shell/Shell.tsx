@@ -5,7 +5,6 @@ export const Shell: React.FC = ({ children }) => (
   <Flex
     sx={{
       alignItems: "center",
-      // backgroundColor: "tomato",
       bottom: 0,
       flex: 1,
       justifyContent: "center",

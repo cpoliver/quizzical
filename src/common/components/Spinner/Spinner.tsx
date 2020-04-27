@@ -41,7 +41,6 @@ export const Spinner: React.FC = () => (
         width: ringSize,
         animation: `${spin} 1s infinite linear`,
         position: "relative",
-        top: 4,
       }}
     >
       <Ring spinner />

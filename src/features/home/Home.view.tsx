@@ -32,7 +32,7 @@ export const Home: React.FC = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Box backgroundColor="red">
+        <Box>
           <Heading sx={appNameStyles}>LET'S GET</Heading>
           <Heading sx={appNameStyles} fontSize={6}>
             QUiZZ!CAL
@@ -46,14 +46,17 @@ export const Home: React.FC = () => {
           position: "relative",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "tomato",
         }}
       >
-        <Text color="primary" fontFamily="body" fontWeight="bold">
-          QUESTION SETTINGS
-        </Text>
+        <Flex flex={1} alignItems="flex-end">
+          <Text color="primary" fontFamily="body" fontWeight="bold">
+            QUESTION SETTINGS
+          </Text>
+        </Flex>
         <QuestionCount />
-        <Difficulty />
+        <Box flex={1}>
+          <Difficulty />
+        </Box>
         <Text
           sx={{
             fontFamily: "body",
@@ -69,9 +72,9 @@ export const Home: React.FC = () => {
           {difficulty.toUpperCase()} True or False questions
         </Text>
       </Flex>
-      <Footer height={HEADER_FOOTER_HEIGHT} justifyContent="flex-end">
+      <Footer height={HEADER_FOOTER_HEIGHT}>
         <Link to="/quiz">
-          <Button alignSelf="flex-end" p={3}>
+          <Button alignSelf="flex-end" p={5}>
             PLAY!
           </Button>
         </Link>

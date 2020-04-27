@@ -14,15 +14,15 @@ export const Quiz: React.FC = () => {
     fetch(
       `https://opentdb.com/api.php?amount=${questionCount}&difficulty=${difficulty}&type=boolean`,
     )
-      .then(res => res.json())
-      .then(data => dispatch(["FETCH_QUESTIONS_SUCCESS", data.results]))
-      .catch(err => dispatch(["FETCH_QUESTIONS_ERROR", err]));
+      .then((res) => res.json())
+      .then((data) => dispatch(["FETCH_QUESTIONS_SUCCESS", data.results]))
+      .catch((err) => dispatch(["FETCH_QUESTIONS_ERROR", err]));
 
   useEffect(() => {
     if (!questions.length) loadQuestions();
   });
 
-  if (!questions.length) return <Spinner />;
+  if (!questions.length || !true) return <Spinner />;
 
   return (
     <Flex flex={1}>
