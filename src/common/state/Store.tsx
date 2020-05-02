@@ -107,8 +107,7 @@ export const StoreProvider: React.FC<{ useMocks?: boolean }> = ({
 }) => {
   const [state, dispatch] = useReducer(
     reducer,
-    mockState,
-    // useMocks ? mockState : initState,
+    useMocks ? mockState : initState,
   );
 
   return (

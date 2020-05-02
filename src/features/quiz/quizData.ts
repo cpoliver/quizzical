@@ -6,8 +6,7 @@ export const questions: Question[] = [
     type: "boolean",
     difficulty: "hard",
     question:
-      "Hippopotomonstrosesquippedaliophobia is the irrational fear of long words.",
-    // "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
+      "It was once believed that injecting shark cartilage into people would prevent them from contracting cancer.",
     correct_answer: "True",
     incorrect_answers: ["False"],
   },
