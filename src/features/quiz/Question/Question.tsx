@@ -54,7 +54,7 @@ export const Question: React.FC = () => {
             variant="transparent"
             onClick={() => dispatch(["ANSWER_QUESTION", "True"])}
           >
-            <Box width={80}>
+            <Box width={[48, 80]}>
               <TrueButton />
             </Box>
           </Button>
@@ -62,7 +62,7 @@ export const Question: React.FC = () => {
             variant="transparent"
             onClick={() => dispatch(["ANSWER_QUESTION", "False"])}
           >
-            <Box width={80}>
+            <Box width={[48, 80]}>
               <FalseButton />
             </Box>
           </Button>

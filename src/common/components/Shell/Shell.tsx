@@ -26,6 +26,8 @@ export const Shell: React.FC = ({ children }) => (
         minHeight: 568,
         minWidth: 320,
         p: [0, 4],
+        pb: 0,
+        position: "relative",
       }}
     >
       {children}

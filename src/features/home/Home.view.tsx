@@ -41,11 +41,10 @@ export const Home: React.FC = () => {
       </Flex>
       <Flex
         sx={{
+          alignItems: "center",
           flex: 1,
           flexDirection: "column",
-          position: "relative",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <Flex flex={1} alignItems="flex-end">
@@ -60,9 +59,10 @@ export const Home: React.FC = () => {
         <Text
           sx={{
             fontFamily: "body",
+            margin: "auto",
             fontSize: 2,
             position: "absolute",
-            bottom: "15%",
+            bottom: "25%",
             textAlign: "center",
             color: "primary",
           }}
@@ -74,7 +74,7 @@ export const Home: React.FC = () => {
       </Flex>
       <Footer height={HEADER_FOOTER_HEIGHT}>
         <Link to="/quiz">
-          <Button alignSelf="flex-end" p={5}>
+          <Button alignSelf="flex-end" p={[3, 5]}>
             PLAY!
           </Button>
         </Link>
