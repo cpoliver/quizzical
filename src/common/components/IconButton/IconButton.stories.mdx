@@ -1,0 +1,26 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import { IconButton } from "./IconButton";
+
+<Meta title="Common | Icon Button" />
+
+# Preview
+
+<Preview>
+  <Story name="Home">
+    <IconButton icon="home" onClick={() => console.log("click: home")}></IconButton>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Settings">
+    <IconButton
+      icon="settings"
+      onClick={() => console.log("click: settings")}
+    />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={IconButton} />
