@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Flex, Button, Box, Heading } from "rebass";
+import { Flex, Button, Box } from "rebass";
 import * as hex2rgb from "hex2rgb";
 
 import { Result } from "./Result";
 import { toResults } from "../quizUtils";
-import { Progress } from "../../../common/components";
+import { Header, Progress, Footer } from "../../../common/components";
 import { QuestionResult } from "../../../common/constants";
 import { store } from "../../../common/state/Store";
 import { colors } from "../../../common/theme";
@@ -21,11 +21,10 @@ export const Results: React.FC = () => {
   const total = questions.length;
 
   return (
-    <Flex variant="wrapper">
-      <Box variant="header" sx={{ position: "relative" }}>
-        <Heading fontSize={3} textAlign="center" mb={2} color="primary">
-          {score / total >= 0.5 ? "WELL DONE" : "BETTER LUCK NEXT TIME"}!
-        </Heading>
+    <>
+      <Header
+        title={score / total >= 0.5 ? "WELL DONE!" : "BETTER LUCK NEXT TIME!"}
+      >
         <Progress current={score} total={total}>
           <>
             YOU ANSWERED{" "}
@@ -35,24 +34,33 @@ export const Results: React.FC = () => {
             QUESTIONS CORRECTLY
           </>
         </Progress>
+      </Header>
+
+      <Flex
+        flexDirection="column"
+        overflowY="scroll"
+        px={[4, 4, 8]}
+        sx={{
+          position: "relative",
+        }}
+      >
         <Fade />
-      </Box>
-      <Flex flexDirection="column" overflowY="scroll" mx={[4, 4, 8]}>
-        {results.map((result: QuestionResult, i: number) => (
-          <Result key={i} {...result} />
-        ))}
-      </Flex>
-      <Box variant="footer" sx={{ position: "relative" }}>
+        <Flex flexDirection="column" overflowY="scroll" py={[2, 2, 6]}>
+          {results.map((result: QuestionResult, i: number) => (
+            <Result key={i} {...result} />
+          ))}
+        </Flex>
         <Fade flip />
+      </Flex>
+
+      <Footer>
         <Button onClick={() => dispatch(["RESET_QUIZ_STATE"])} p={5}>
           Play Again?
         </Button>
-      </Box>
-    </Flex>
+      </Footer>
+    </>
   );
 };
-
-const FADE_HEIGHT = 50;
 
 const toRgba = (hex: string, alpha: number): string => {
   const [r, g, b] = hex2rgb(hex).rgb;
@@ -66,9 +74,11 @@ const Fade: React.FC<{ flip?: boolean }> = ({ flip }) => (
         colors.background,
         0,
       )} 0%, ${toRgba(colors.background, 1)} 100%)`,
-      bottom: flip ? "initial" : -FADE_HEIGHT,
-      top: flip ? -FADE_HEIGHT : "initial",
-      height: FADE_HEIGHT,
+      top: flip ? "initial" : 0,
+      bottom: flip ? 0 : "initial",
+      left: 0,
+      right: 0,
+      height: [48, 48, 80],
       position: "absolute",
       flex: 1,
       width: "100%",

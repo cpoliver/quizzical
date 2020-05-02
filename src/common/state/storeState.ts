@@ -33,7 +33,7 @@ const mockQuizState: QuizState = {
   isLoading: false,
   answers: repeat("False", questionCount) as Answer[],
   questions: mockQuestions,
-  currentQuestion: 0,
+  currentQuestion: mockQuestions.length,
 };
 
 // Quiz Settings State
@@ -55,7 +55,8 @@ const initQuizSettingsState: QuizSettingsState = {
 export type StoreState = QuizState & QuizSettingsState;
 
 export const initState: StoreState = {
-  ...initQuizState,
+  // ...initQuizState,
+  ...mockQuizState,
   ...initQuizSettingsState,
 };
 

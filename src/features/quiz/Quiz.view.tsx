@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { Flex } from "rebass";
 
 import { Question } from "./Question/Question";
 import { Results } from "./Results/Results";
@@ -24,9 +23,5 @@ export const Quiz: React.FC = () => {
 
   if (!questions.length || !true) return <Spinner />;
 
-  return (
-    <Flex flex={1}>
-      {currentQuestion === questions.length ? <Results /> : <Question />}
-    </Flex>
-  );
+  return currentQuestion === questions.length ? <Results /> : <Question />;
 };

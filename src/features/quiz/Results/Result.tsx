@@ -11,13 +11,13 @@ export const Result: React.FC<QuestionResult> = ({
   given_answer,
   correct_answer,
 }) => (
-  <Flex p={2} m="auto" width="100%">
+  <Flex p={3} m="auto" width="100%">
     <Box width={32} mr={3} alignSelf="center">
       {is_correct ? <TrueButton /> : <FalseButton />}
     </Box>
     <Flex flex={1} flexDirection="column" justifyContent="space-between" my={3}>
       <Box flex={1}>
-        <Text fontFamily="body" color="primary">
+        <Text fontSize={4} fontFamily="body" color="primary">
           <Html html={question} />
         </Text>
       </Box>

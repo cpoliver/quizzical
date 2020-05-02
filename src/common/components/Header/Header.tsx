@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
       flexDirection: "column",
       justifyContent: "center",
       p: 3,
+      position: "relative",
       textAlign: "center",
     }}
   >
