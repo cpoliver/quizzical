@@ -1,6 +1,7 @@
 export * from "./Footer/Footer";
 export * from "./Header/Header";
 export * from "./Html/Html";
+export * from "./IconButton/IconButton";
 export * from "./Progress/Progress";
 export * from "./Result/Result";
 export * from "./Ring/Ring";

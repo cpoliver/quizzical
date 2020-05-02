@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { Flex, Button, Box } from "rebass";
+import { useHistory } from "react-router-dom";
 import * as hex2rgb from "hex2rgb";
 
 import { Result } from "./Result";
 import { toResults } from "../quizUtils";
-import { Header, Progress, Footer } from "../../../common/components";
+import {
+  Header,
+  Progress,
+  Footer,
+  IconButton,
+} from "../../../common/components";
 import { QuestionResult } from "../../../common/constants";
 import { store } from "../../../common/state/Store";
 import { colors } from "../../../common/theme";
@@ -16,14 +22,16 @@ export const Results: React.FC = () => {
   } = useContext(store);
 
   const results = toResults(questions, answers);
-  const score = results.filter((result: QuestionResult) => result.is_correct)
-    .length;
+  const score = results.filter((r: QuestionResult) => r.is_correct).length;
   const total = questions.length;
+
+  const history = useHistory();
 
   return (
     <>
       <Header
         title={score / total >= 0.5 ? "WELL DONE!" : "BETTER LUCK NEXT TIME!"}
+        button={<IconButton icon="home" onClick={() => history.push("/")} />}
       >
         <Progress current={score} total={total}>
           <>

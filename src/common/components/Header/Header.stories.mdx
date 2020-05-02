@@ -1,7 +1,7 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
-import { Button } from "rebass";
 
 import { Header } from "./Header";
+import { IconButton } from "../IconButton/IconButton";
 import { Progress } from "../Progress/Progress";
 
 <Meta title="Common | Header" />
@@ -10,7 +10,7 @@ import { Progress } from "../Progress/Progress";
 
 <Preview>
   <Story name="Home">
-    <Header button={<Button variant="icon">settings</Button>} />
+    <Header button={<IconButton icon="settings" onClick={() => {}} />} />
   </Story>
 </Preview>
 
@@ -24,7 +24,7 @@ import { Progress } from "../Progress/Progress";
 
 <Preview>
   <Story name="Results">
-    <Header title="Well Done!" button={<Button variant="icon">home</Button>}>
+    <Header title="Well Done!" button={<IconButton icon="home" onClick={() => {}} />}>
       <Progress current={8} total={10}>
         <div>
           YOU ANSWERED{" "}

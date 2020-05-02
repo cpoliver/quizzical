@@ -7,6 +7,8 @@ type HeaderProps = {
   children?: ReactNode;
 };
 
+const PADDING = 80;
+
 export const Header: React.FC<HeaderProps> = ({
   title,
   button,
@@ -24,12 +26,12 @@ export const Header: React.FC<HeaderProps> = ({
     }}
   >
     <Flex flex={1}>
-      <Box flex={1} />
+      <Box width={PADDING} />
       <Box flex={4}>
         <Heading
           sx={{
             color: "primary",
-            fontSize: 3,
+            fontSize: [2, 3],
             mb: 2,
             textAlign: "center",
             textTransform: "uppercase",
@@ -38,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
           {title}
         </Heading>
       </Box>
-      <Box flex={1}>{button}</Box>
+      <Box width={PADDING}>{button}</Box>
     </Flex>
     <Box flex={1}>{children}</Box>
   </Flex>

@@ -42,7 +42,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
   icon,
   onClick,
 }: IconButtonProps) => (
-  <Button variant="transparent" onClick={onClick} height={SIZE} width={SIZE}>
+  <Button
+    variant="transparent"
+    onClick={onClick}
+    height={[SIZE * 0.75, SIZE]}
+    width={[SIZE * 0.75, SIZE]}
+  >
     {icons[icon]}
   </Button>
 );

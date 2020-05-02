@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import { Flex, Button, Box, Text } from "rebass";
+import { useHistory } from "react-router-dom";
 
 import { FalseButton, TrueButton } from "../AnswerButton/AnswerButton";
+import {
+  Html,
+  Progress,
+  Header,
+  Footer,
+  IconButton,
+} from "../../../common/components";
 import { store } from "../../../common/state/Store";
-import { Html, Progress, Header, Footer } from "../../../common/components";
 
 export const Question: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -12,9 +19,14 @@ export const Question: React.FC = () => {
   const { category, question } = questions[current];
   const total = questions.length;
 
+  const history = useHistory();
+
   return (
     <Flex flexDirection="column" flex={1}>
-      <Header title={category}>
+      <Header
+        title={category}
+        button={<IconButton icon="home" onClick={() => history.push("/")} />}
+      >
         <Progress
           current={current}
           total={total}
