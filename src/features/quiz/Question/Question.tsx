@@ -33,7 +33,7 @@ export const Question: React.FC = () => {
           children={`${current}/${total}`}
         />
       </Header>
-      <Box flex={1} px={[2, 8]}>
+      <Box flex={1} p={[2, 8]}>
         <Flex flex={1} m={4}>
           <Text
             sx={{
@@ -41,6 +41,7 @@ export const Question: React.FC = () => {
               color: "primary",
               fontSize: [4, 5, 6],
               hyphens: "auto",
+              lineHeight: "130%",
               overflowWrap: "break-word",
             }}
           >

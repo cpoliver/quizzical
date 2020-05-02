@@ -62,7 +62,7 @@ export const Results: React.FC = () => {
       </Flex>
 
       <Footer>
-        <Button onClick={() => dispatch(["RESET_QUIZ_STATE"])} p={[3, 5]}>
+        <Button onClick={() => dispatch(["RESET_QUIZ_STATE"])}>
           Play Again?
         </Button>
       </Footer>

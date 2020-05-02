@@ -17,16 +17,18 @@ export const Shell: React.FC = ({ children }) => (
   >
     <Flex
       sx={{
+        borderColor: "faded",
+        borderStyle: "solid",
+        borderWidth: [0, 0, 3],
         flex: 1,
         flexDirection: "column",
         height: "100%",
-        margin: "auto",
+        m: "auto",
+        mx: [0, 0, 2],
         maxHeight: 1024,
         maxWidth: 960,
         minHeight: 568,
         minWidth: 320,
-        p: [0, 4],
-        pb: 0,
         position: "relative",
       }}
     >

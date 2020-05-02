@@ -11,6 +11,7 @@ const buttons = {
     fontFamily: "body",
     fontSize: 3,
     fontWeight: "semi",
+    p: [3, 5],
     transition: "background-color .4s, color .2s",
     width: "100%",
     "&:hover": {

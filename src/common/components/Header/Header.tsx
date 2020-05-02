@@ -18,9 +18,13 @@ export const Header: React.FC<HeaderProps> = ({
     as="header"
     sx={{
       alignItems: "stretch",
+      borderColor: "faded",
+      borderStyle: "solid",
+      borderWidth: 0,
+      borderBottomWidth: [0, 0, 2],
       flexDirection: "column",
       justifyContent: "center",
-      p: 3,
+      p: [3, 3, 5],
       position: "relative",
       textAlign: "center",
     }}

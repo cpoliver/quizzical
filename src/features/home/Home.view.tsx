@@ -74,9 +74,7 @@ export const Home: React.FC = () => {
       </Flex>
       <Footer height={HEADER_FOOTER_HEIGHT}>
         <Link to="/quiz">
-          <Button alignSelf="flex-end" p={[3, 5]}>
-            PLAY!
-          </Button>
+          <Button alignSelf="flex-end">PLAY!</Button>
         </Link>
       </Footer>
     </>

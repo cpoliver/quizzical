@@ -3,7 +3,17 @@ import { Box, Flex, FlexProps } from "rebass";
 
 export const Footer: React.FC<FlexProps> = ({ children, ...props }) => (
   // @ts-ignore
-  <Flex as="footer" p={3} {...props}>
+  <Flex
+    as="footer"
+    p={[3, 3, 5]}
+    {...props}
+    sx={{
+      borderColor: "faded",
+      borderStyle: "solid",
+      borderWidth: 0,
+      borderTopWidth: [0, 0, 2],
+    }}
+  >
     <Box
       sx={{
         alignSelf: "flex-end",
