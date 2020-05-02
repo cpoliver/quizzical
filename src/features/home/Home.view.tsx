@@ -9,7 +9,6 @@ import { store } from "../../common/state/Store";
 
 const appNameStyles: SxStyleProp = {
   color: "primary",
-  fontSize: 5,
   fontWeight: "bold",
   mb: -2,
   textAlign: "center",
@@ -27,13 +26,18 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <Flex
-        height={HEADER_FOOTER_HEIGHT}
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box>
-          <Heading sx={appNameStyles}>LET'S GET</Heading>
+      <Flex height={HEADER_FOOTER_HEIGHT} justifyContent="center">
+        <Box
+          sx={{
+            alignSelf: "flex-end",
+            position: "relative",
+            top: ["initial", "50%"],
+            zoom: [1, 1.4, 1.8],
+          }}
+        >
+          <Heading sx={appNameStyles} fontSize={5}>
+            LET'S GET
+          </Heading>
           <Heading sx={appNameStyles} fontSize={6}>
             QUiZZ!CAL
           </Heading>
@@ -45,6 +49,7 @@ export const Home: React.FC = () => {
           flex: 1,
           flexDirection: "column",
           justifyContent: "center",
+          zoom: [1, 1.25, 1.5],
         }}
       >
         <Flex flex={1} alignItems="flex-end">
