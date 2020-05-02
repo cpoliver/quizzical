@@ -45,11 +45,12 @@ export const Results: React.FC = () => {
       </Header>
 
       <Flex
-        flexDirection="column"
-        overflowY="scroll"
-        px={[4, 4, 8]}
         sx={{
+          flex: 1,
+          flexDirection: "column",
+          overflowY: "scroll",
           position: "relative",
+          px: [4, 4, 8],
         }}
       >
         <Fade />
