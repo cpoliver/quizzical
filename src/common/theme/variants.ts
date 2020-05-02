@@ -19,7 +19,6 @@ const buttons = {
       color: "primary",
     },
   },
-  // TODO: move
   questionCount: {
     cursor: "pointer",
     backgroundColor: "background",
@@ -36,7 +35,6 @@ const buttons = {
 
 export const variants = {
   buttons,
-  // TODO: (re)move
   wrapper: {
     alignItems: "center",
     flex: 1,
